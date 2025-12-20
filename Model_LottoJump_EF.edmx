@@ -1,0 +1,1572 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ITechJumpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LotteryDrawResultsCash5">
+          <Key>
+            <PropertyRef Name="ResultID" />
+          </Key>
+          <Property Name="ResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserAlias" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CardName" Type="nvarchar" MaxLength="100" />
+          <Property Name="GameName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WID" Type="int" Nullable="false" />
+          <Property Name="DrawDate" Type="date" Nullable="false" />
+          <Property Name="Num1" Type="tinyint" Nullable="false" />
+          <Property Name="Num2" Type="tinyint" Nullable="false" />
+          <Property Name="Num3" Type="tinyint" Nullable="false" />
+          <Property Name="Num4" Type="tinyint" Nullable="false" />
+          <Property Name="Num5" Type="tinyint" Nullable="false" />
+          <Property Name="UNum1" Type="tinyint" Nullable="false" />
+          <Property Name="UNum2" Type="tinyint" Nullable="false" />
+          <Property Name="UNum3" Type="tinyint" Nullable="false" />
+          <Property Name="UNum4" Type="tinyint" Nullable="false" />
+          <Property Name="UNum5" Type="tinyint" Nullable="false" />
+          <Property Name="Winner" Type="bit" Nullable="false" />
+          <Property Name="RequestMatch" Type="tinyint" Nullable="false" />
+          <Property Name="ActualMatch" Type="tinyint" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EMailSent" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="LotteryDrawResultsMega">
+          <Key>
+            <PropertyRef Name="ResultID" />
+          </Key>
+          <Property Name="ResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserAlias" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CardName" Type="nvarchar" MaxLength="100" />
+          <Property Name="GameName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WID" Type="int" Nullable="false" />
+          <Property Name="DrawDate" Type="date" Nullable="false" />
+          <Property Name="Num1" Type="tinyint" Nullable="false" />
+          <Property Name="Num2" Type="tinyint" Nullable="false" />
+          <Property Name="Num3" Type="tinyint" Nullable="false" />
+          <Property Name="Num4" Type="tinyint" Nullable="false" />
+          <Property Name="Num5" Type="tinyint" Nullable="false" />
+          <Property Name="PNum" Type="tinyint" Nullable="false" />
+          <Property Name="UNum1" Type="tinyint" Nullable="false" />
+          <Property Name="UNum2" Type="tinyint" Nullable="false" />
+          <Property Name="UNum3" Type="tinyint" Nullable="false" />
+          <Property Name="UNum4" Type="tinyint" Nullable="false" />
+          <Property Name="UNum5" Type="tinyint" Nullable="false" />
+          <Property Name="UPNum" Type="tinyint" Nullable="false" />
+          <Property Name="Winner" Type="bit" Nullable="false" />
+          <Property Name="RequestMatch" Type="tinyint" Nullable="false" />
+          <Property Name="ActualMatch" Type="tinyint" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EMailSent" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="LotteryDrawResultsPower">
+          <Key>
+            <PropertyRef Name="ResultID" />
+          </Key>
+          <Property Name="ResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserAlias" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CardName" Type="nvarchar" MaxLength="100" />
+          <Property Name="GameName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WID" Type="int" Nullable="false" />
+          <Property Name="DrawDate" Type="date" Nullable="false" />
+          <Property Name="Num1" Type="tinyint" Nullable="false" />
+          <Property Name="Num2" Type="tinyint" Nullable="false" />
+          <Property Name="Num3" Type="tinyint" Nullable="false" />
+          <Property Name="Num4" Type="tinyint" Nullable="false" />
+          <Property Name="Num5" Type="tinyint" Nullable="false" />
+          <Property Name="PNum" Type="tinyint" Nullable="false" />
+          <Property Name="UNum1" Type="tinyint" Nullable="false" />
+          <Property Name="UNum2" Type="tinyint" Nullable="false" />
+          <Property Name="UNum3" Type="tinyint" Nullable="false" />
+          <Property Name="UNum4" Type="tinyint" Nullable="false" />
+          <Property Name="UNum5" Type="tinyint" Nullable="false" />
+          <Property Name="UPNum" Type="tinyint" Nullable="false" />
+          <Property Name="Winner" Type="bit" Nullable="false" />
+          <Property Name="RequestMatch" Type="tinyint" Nullable="false" />
+          <Property Name="ActualMatch" Type="tinyint" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EMailSent" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="LotteryDrawResultsTexas">
+          <Key>
+            <PropertyRef Name="ResultID" />
+          </Key>
+          <Property Name="ResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserAlias" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CardName" Type="nvarchar" MaxLength="100" />
+          <Property Name="GameName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WID" Type="int" Nullable="false" />
+          <Property Name="DrawDate" Type="date" Nullable="false" />
+          <Property Name="Num1" Type="tinyint" Nullable="false" />
+          <Property Name="Num2" Type="tinyint" Nullable="false" />
+          <Property Name="Num3" Type="tinyint" Nullable="false" />
+          <Property Name="Num4" Type="tinyint" Nullable="false" />
+          <Property Name="Num5" Type="tinyint" Nullable="false" />
+          <Property Name="Num6" Type="tinyint" Nullable="false" />
+          <Property Name="UNum1" Type="tinyint" Nullable="false" />
+          <Property Name="UNum2" Type="tinyint" Nullable="false" />
+          <Property Name="UNum3" Type="tinyint" Nullable="false" />
+          <Property Name="UNum4" Type="tinyint" Nullable="false" />
+          <Property Name="UNum5" Type="tinyint" Nullable="false" />
+          <Property Name="UNum6" Type="tinyint" Nullable="false" />
+          <Property Name="Winner" Type="bit" Nullable="false" />
+          <Property Name="RequestMatch" Type="tinyint" Nullable="false" />
+          <Property Name="ActualMatch" Type="tinyint" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EMailSent" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="LotteryDrawResultsTwoStep">
+          <Key>
+            <PropertyRef Name="ResultID" />
+          </Key>
+          <Property Name="ResultID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UserAlias" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CardName" Type="nvarchar" MaxLength="100" />
+          <Property Name="GameName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WID" Type="int" Nullable="false" />
+          <Property Name="DrawDate" Type="date" Nullable="false" />
+          <Property Name="Num1" Type="tinyint" Nullable="false" />
+          <Property Name="Num2" Type="tinyint" Nullable="false" />
+          <Property Name="Num3" Type="tinyint" Nullable="false" />
+          <Property Name="Num4" Type="tinyint" Nullable="false" />
+          <Property Name="PNum" Type="tinyint" Nullable="false" />
+          <Property Name="UNum1" Type="tinyint" Nullable="false" />
+          <Property Name="UNum2" Type="tinyint" Nullable="false" />
+          <Property Name="UNum3" Type="tinyint" Nullable="false" />
+          <Property Name="UNum4" Type="tinyint" Nullable="false" />
+          <Property Name="UPNum" Type="tinyint" Nullable="false" />
+          <Property Name="Winner" Type="bit" Nullable="false" />
+          <Property Name="RequestMatch" Type="tinyint" Nullable="false" />
+          <Property Name="ActualMatch" Type="tinyint" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EMailSent" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="iTechCards">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="UserAlias" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="CDate" Type="datetime" Nullable="false" />
+          <Property Name="CardGame" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="CardGroup" Type="int" Nullable="false" />
+          <Property Name="CardSlot" Type="int" Nullable="false" />
+          <Property Name="Active" Type="int" Nullable="false" />
+          <Property Name="CardName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Num1" Type="int" Nullable="false" />
+          <Property Name="Num2" Type="int" Nullable="false" />
+          <Property Name="Num3" Type="int" Nullable="false" />
+          <Property Name="Num4" Type="int" Nullable="false" />
+          <Property Name="Num5" Type="int" Nullable="false" />
+          <Property Name="PNum" Type="int" Nullable="false" />
+          <Property Name="Multi" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="iTechCards_Cash5">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="UserAlias" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="CDate" Type="datetime" Nullable="false" />
+          <Property Name="CardGame" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="CardGroup" Type="int" Nullable="false" />
+          <Property Name="CardSlot" Type="int" Nullable="false" />
+          <Property Name="Active" Type="int" Nullable="false" />
+          <Property Name="CardName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Num1" Type="int" Nullable="false" />
+          <Property Name="Num2" Type="int" Nullable="false" />
+          <Property Name="Num3" Type="int" Nullable="false" />
+          <Property Name="Num4" Type="int" Nullable="false" />
+          <Property Name="Num5" Type="int" Nullable="false" />
+          <Property Name="Multi" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="iTechCards_Texas">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="UserAlias" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="CDate" Type="datetime" Nullable="false" />
+          <Property Name="CardGame" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="CardGroup" Type="int" Nullable="false" />
+          <Property Name="CardSlot" Type="int" Nullable="false" />
+          <Property Name="Active" Type="int" Nullable="false" />
+          <Property Name="CardName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Num1" Type="int" Nullable="false" />
+          <Property Name="Num2" Type="int" Nullable="false" />
+          <Property Name="Num3" Type="int" Nullable="false" />
+          <Property Name="Num4" Type="int" Nullable="false" />
+          <Property Name="Num5" Type="int" Nullable="false" />
+          <Property Name="Num6" Type="int" Nullable="false" />
+          <Property Name="Multi" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="iTechCards_TwoStep">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="UserAlias" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="CDate" Type="datetime" Nullable="false" />
+          <Property Name="CardGame" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="CardGroup" Type="int" Nullable="false" />
+          <Property Name="CardSlot" Type="int" Nullable="false" />
+          <Property Name="Active" Type="int" Nullable="false" />
+          <Property Name="CardName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Num1" Type="int" Nullable="false" />
+          <Property Name="Num2" Type="int" Nullable="false" />
+          <Property Name="Num3" Type="int" Nullable="false" />
+          <Property Name="Num4" Type="int" Nullable="false" />
+          <Property Name="PNum" Type="int" Nullable="false" />
+          <Property Name="Multi" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ITechJumpAudit">
+          <Key>
+            <PropertyRef Name="AuditID" />
+          </Key>
+          <Property Name="AuditID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="Origin" Type="varchar" MaxLength="8" />
+          <Property Name="EventType" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ErrorCode" Type="varchar" MaxLength="10" />
+          <Property Name="CommentShort" Type="varchar" MaxLength="800" />
+          <Property Name="DateTimeStamp" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="SeverityCode" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ITechJumpAuditDetail">
+          <Key>
+            <PropertyRef Name="AuditDetailID" />
+          </Key>
+          <Property Name="AuditDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RefAuditID" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="200" />
+          <Property Name="ErrorDesc" Type="varchar" MaxLength="200" />
+          <Property Name="DateTimeStamp" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="iTechWinnersCashFive">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Game" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GDate" Type="datetime" Nullable="false" />
+          <Property Name="Month" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Day" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Year" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num1" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num2" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num3" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num4" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num5" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Multi" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="FullPrize" Type="varchar" MaxLength="50" />
+          <Property Name="CashPrize" Type="varchar" MaxLength="50" />
+          <Property Name="SomeOneWin" Type="int" />
+        </EntityType>
+        <EntityType Name="iTechWinnersLocation">
+          <Key>
+            <PropertyRef Name="LID" />
+          </Key>
+          <Property Name="LID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Prize" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="State" Type="varchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="iTechWinnersMega">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Game" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GDate" Type="datetime" Nullable="false" />
+          <Property Name="Month" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Day" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Year" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num1" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num2" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num3" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num4" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num5" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="PNum" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Multi" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="FullPrize" Type="varchar" MaxLength="50" />
+          <Property Name="CashPrize" Type="varchar" MaxLength="50" />
+          <Property Name="SomeOneWin" Type="int" />
+        </EntityType>
+        <EntityType Name="iTechWinnersPower">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Game" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GDate" Type="datetime" Nullable="false" />
+          <Property Name="Month" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Day" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Year" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num1" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num2" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num3" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num4" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num5" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="PNum" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Multi" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="FullPrize" Type="varchar" MaxLength="50" />
+          <Property Name="CashPrize" Type="varchar" MaxLength="50" />
+          <Property Name="SomeOneWin" Type="int" />
+        </EntityType>
+        <EntityType Name="iTechWinnersTexas">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Game" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GDate" Type="datetime" Nullable="false" />
+          <Property Name="Month" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Day" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Year" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num1" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num2" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num3" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num4" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num5" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num6" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Multi" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="FullPrize" Type="varchar" MaxLength="50" />
+          <Property Name="CashPrize" Type="varchar" MaxLength="50" />
+          <Property Name="SomeOneWin" Type="int" />
+        </EntityType>
+        <EntityType Name="iTechWinnersTwoStep">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Game" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GDate" Type="datetime" Nullable="false" />
+          <Property Name="Month" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Day" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Year" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num1" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num2" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num3" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num4" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Num5" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="Multi" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="FullPrize" Type="varchar" MaxLength="50" />
+          <Property Name="CashPrize" Type="varchar" MaxLength="50" />
+          <Property Name="SomeOneWin" Type="int" />
+        </EntityType>
+        <EntityType Name="SubscriptionPlans">
+          <Key>
+            <PropertyRef Name="PlanCode" />
+          </Key>
+          <Property Name="PlanCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PlanName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Currency" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="BillingPeriod" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TrialDays" Type="int" />
+          <Property Name="MaxUsers" Type="int" />
+          <Property Name="MinNumbers" Type="int" />
+          <Property Name="MaxNumbers" Type="int" />
+          <Property Name="TicketSets" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PasswordHash" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PasswordAlgo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PasswordUpdatedAt" Type="datetime2" Precision="0" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="25" />
+          <Property Name="PhoneConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndAt" Type="datetime2" Precision="0" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastLoginAt" Type="datetime2" Precision="0" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="LastLoginUtc" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="UsersInfo">
+          <Key>
+            <PropertyRef Name="UserInfoId" />
+          </Key>
+          <Property Name="UserInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleInitial" Type="nchar" MaxLength="1" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserAlias" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="15" />
+          <Property Name="BirthMonth" Type="tinyint" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="PhoneNum" Type="nvarchar" MaxLength="25" />
+          <Property Name="ReadPW" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSubscriptions">
+          <Key>
+            <PropertyRef Name="SubscriptionId" />
+          </Key>
+          <Property Name="SubscriptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserAlias" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="PlanCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AutoRenew" Type="bit" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="StartUtc" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="CurrentPeriodStartUtc" Type="datetime2" Precision="0" />
+          <Property Name="CurrentPeriodEndUtc" Type="datetime2" Precision="0" />
+          <Property Name="TrialEndUtc" Type="datetime2" Precision="0" />
+          <Property Name="CanceledAtUtc" Type="datetime2" Precision="0" />
+          <Property Name="EndedAtUtc" Type="datetime2" Precision="0" />
+          <Property Name="PriceAtPurchase" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Currency" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="ExternalProvider" Type="varchar" MaxLength="30" />
+          <Property Name="ExternalSubscriptionId" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ITechJumpAuditDetail_Audit">
+          <End Role="ITechJumpAudit" Type="Self.ITechJumpAudit" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ITechJumpAuditDetail" Type="Self.ITechJumpAuditDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ITechJumpAudit">
+              <PropertyRef Name="AuditID" />
+            </Principal>
+            <Dependent Role="ITechJumpAuditDetail">
+              <PropertyRef Name="RefAuditID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersInfo_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersInfo" Type="Self.UsersInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersInfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSubs_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserSubscriptions" Type="Self.UserSubscriptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSubscriptions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ITechJumpModelStoreContainer">
+          <EntitySet Name="LotteryDrawResultsCash5" EntityType="Self.LotteryDrawResultsCash5" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LotteryDrawResultsMega" EntityType="Self.LotteryDrawResultsMega" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LotteryDrawResultsPower" EntityType="Self.LotteryDrawResultsPower" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LotteryDrawResultsTexas" EntityType="Self.LotteryDrawResultsTexas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LotteryDrawResultsTwoStep" EntityType="Self.LotteryDrawResultsTwoStep" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iTechCards" EntityType="Self.iTechCards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iTechCards_Cash5" EntityType="Self.iTechCards_Cash5" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iTechCards_Texas" EntityType="Self.iTechCards_Texas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iTechCards_TwoStep" EntityType="Self.iTechCards_TwoStep" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ITechJumpAudit" EntityType="Self.ITechJumpAudit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ITechJumpAuditDetail" EntityType="Self.ITechJumpAuditDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iTechWinnersCashFive" EntityType="Self.iTechWinnersCashFive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iTechWinnersLocation" EntityType="Self.iTechWinnersLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iTechWinnersMega" EntityType="Self.iTechWinnersMega" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iTechWinnersPower" EntityType="Self.iTechWinnersPower" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iTechWinnersTexas" EntityType="Self.iTechWinnersTexas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iTechWinnersTwoStep" EntityType="Self.iTechWinnersTwoStep" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubscriptionPlans" EntityType="Self.SubscriptionPlans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersInfo" EntityType="Self.UsersInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSubscriptions" EntityType="Self.UserSubscriptions" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ITechJumpAuditDetail_Audit" Association="Self.FK_ITechJumpAuditDetail_Audit">
+            <End Role="ITechJumpAudit" EntitySet="ITechJumpAudit" />
+            <End Role="ITechJumpAuditDetail" EntitySet="ITechJumpAuditDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersInfo_Users" Association="Self.FK_UsersInfo_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersInfo" EntitySet="UsersInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSubs_Users" Association="Self.FK_UserSubs_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSubscriptions" EntitySet="UserSubscriptions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ITechJumpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LotteryDrawResultsCash5">
+          <Key>
+            <PropertyRef Name="ResultID" />
+          </Key>
+          <Property Name="ResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserAlias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CardName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GameName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WID" Type="Int32" Nullable="false" />
+          <Property Name="DrawDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Num1" Type="Byte" Nullable="false" />
+          <Property Name="Num2" Type="Byte" Nullable="false" />
+          <Property Name="Num3" Type="Byte" Nullable="false" />
+          <Property Name="Num4" Type="Byte" Nullable="false" />
+          <Property Name="Num5" Type="Byte" Nullable="false" />
+          <Property Name="UNum1" Type="Byte" Nullable="false" />
+          <Property Name="UNum2" Type="Byte" Nullable="false" />
+          <Property Name="UNum3" Type="Byte" Nullable="false" />
+          <Property Name="UNum4" Type="Byte" Nullable="false" />
+          <Property Name="UNum5" Type="Byte" Nullable="false" />
+          <Property Name="Winner" Type="Boolean" Nullable="false" />
+          <Property Name="RequestMatch" Type="Byte" Nullable="false" />
+          <Property Name="ActualMatch" Type="Byte" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EMailSent" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="LotteryDrawResultsMega">
+          <Key>
+            <PropertyRef Name="ResultID" />
+          </Key>
+          <Property Name="ResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserAlias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CardName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GameName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WID" Type="Int32" Nullable="false" />
+          <Property Name="DrawDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Num1" Type="Byte" Nullable="false" />
+          <Property Name="Num2" Type="Byte" Nullable="false" />
+          <Property Name="Num3" Type="Byte" Nullable="false" />
+          <Property Name="Num4" Type="Byte" Nullable="false" />
+          <Property Name="Num5" Type="Byte" Nullable="false" />
+          <Property Name="PNum" Type="Byte" Nullable="false" />
+          <Property Name="UNum1" Type="Byte" Nullable="false" />
+          <Property Name="UNum2" Type="Byte" Nullable="false" />
+          <Property Name="UNum3" Type="Byte" Nullable="false" />
+          <Property Name="UNum4" Type="Byte" Nullable="false" />
+          <Property Name="UNum5" Type="Byte" Nullable="false" />
+          <Property Name="UPNum" Type="Byte" Nullable="false" />
+          <Property Name="Winner" Type="Boolean" Nullable="false" />
+          <Property Name="RequestMatch" Type="Byte" Nullable="false" />
+          <Property Name="ActualMatch" Type="Byte" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EMailSent" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="LotteryDrawResultsPower">
+          <Key>
+            <PropertyRef Name="ResultID" />
+          </Key>
+          <Property Name="ResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserAlias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CardName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GameName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WID" Type="Int32" Nullable="false" />
+          <Property Name="DrawDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Num1" Type="Byte" Nullable="false" />
+          <Property Name="Num2" Type="Byte" Nullable="false" />
+          <Property Name="Num3" Type="Byte" Nullable="false" />
+          <Property Name="Num4" Type="Byte" Nullable="false" />
+          <Property Name="Num5" Type="Byte" Nullable="false" />
+          <Property Name="PNum" Type="Byte" Nullable="false" />
+          <Property Name="UNum1" Type="Byte" Nullable="false" />
+          <Property Name="UNum2" Type="Byte" Nullable="false" />
+          <Property Name="UNum3" Type="Byte" Nullable="false" />
+          <Property Name="UNum4" Type="Byte" Nullable="false" />
+          <Property Name="UNum5" Type="Byte" Nullable="false" />
+          <Property Name="UPNum" Type="Byte" Nullable="false" />
+          <Property Name="Winner" Type="Boolean" Nullable="false" />
+          <Property Name="RequestMatch" Type="Byte" Nullable="false" />
+          <Property Name="ActualMatch" Type="Byte" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EMailSent" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="LotteryDrawResultsTexa">
+          <Key>
+            <PropertyRef Name="ResultID" />
+          </Key>
+          <Property Name="ResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserAlias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CardName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GameName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WID" Type="Int32" Nullable="false" />
+          <Property Name="DrawDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Num1" Type="Byte" Nullable="false" />
+          <Property Name="Num2" Type="Byte" Nullable="false" />
+          <Property Name="Num3" Type="Byte" Nullable="false" />
+          <Property Name="Num4" Type="Byte" Nullable="false" />
+          <Property Name="Num5" Type="Byte" Nullable="false" />
+          <Property Name="Num6" Type="Byte" Nullable="false" />
+          <Property Name="UNum1" Type="Byte" Nullable="false" />
+          <Property Name="UNum2" Type="Byte" Nullable="false" />
+          <Property Name="UNum3" Type="Byte" Nullable="false" />
+          <Property Name="UNum4" Type="Byte" Nullable="false" />
+          <Property Name="UNum5" Type="Byte" Nullable="false" />
+          <Property Name="UNum6" Type="Byte" Nullable="false" />
+          <Property Name="Winner" Type="Boolean" Nullable="false" />
+          <Property Name="RequestMatch" Type="Byte" Nullable="false" />
+          <Property Name="ActualMatch" Type="Byte" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EMailSent" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="LotteryDrawResultsTwoStep">
+          <Key>
+            <PropertyRef Name="ResultID" />
+          </Key>
+          <Property Name="ResultID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserAlias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CardName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GameName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WID" Type="Int32" Nullable="false" />
+          <Property Name="DrawDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Num1" Type="Byte" Nullable="false" />
+          <Property Name="Num2" Type="Byte" Nullable="false" />
+          <Property Name="Num3" Type="Byte" Nullable="false" />
+          <Property Name="Num4" Type="Byte" Nullable="false" />
+          <Property Name="PNum" Type="Byte" Nullable="false" />
+          <Property Name="UNum1" Type="Byte" Nullable="false" />
+          <Property Name="UNum2" Type="Byte" Nullable="false" />
+          <Property Name="UNum3" Type="Byte" Nullable="false" />
+          <Property Name="UNum4" Type="Byte" Nullable="false" />
+          <Property Name="UPNum" Type="Byte" Nullable="false" />
+          <Property Name="Winner" Type="Boolean" Nullable="false" />
+          <Property Name="RequestMatch" Type="Byte" Nullable="false" />
+          <Property Name="ActualMatch" Type="Byte" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EMailSent" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="iTechCard">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="UserAlias" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CardGame" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CardGroup" Type="Int32" Nullable="false" />
+          <Property Name="CardSlot" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Int32" Nullable="false" />
+          <Property Name="CardName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Num1" Type="Int32" Nullable="false" />
+          <Property Name="Num2" Type="Int32" Nullable="false" />
+          <Property Name="Num3" Type="Int32" Nullable="false" />
+          <Property Name="Num4" Type="Int32" Nullable="false" />
+          <Property Name="Num5" Type="Int32" Nullable="false" />
+          <Property Name="PNum" Type="Int32" Nullable="false" />
+          <Property Name="Multi" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="iTechCards_Cash5">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="UserAlias" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CardGame" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CardGroup" Type="Int32" Nullable="false" />
+          <Property Name="CardSlot" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Int32" Nullable="false" />
+          <Property Name="CardName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Num1" Type="Int32" Nullable="false" />
+          <Property Name="Num2" Type="Int32" Nullable="false" />
+          <Property Name="Num3" Type="Int32" Nullable="false" />
+          <Property Name="Num4" Type="Int32" Nullable="false" />
+          <Property Name="Num5" Type="Int32" Nullable="false" />
+          <Property Name="Multi" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="iTechCards_Texas">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="UserAlias" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CardGame" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CardGroup" Type="Int32" Nullable="false" />
+          <Property Name="CardSlot" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Int32" Nullable="false" />
+          <Property Name="CardName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Num1" Type="Int32" Nullable="false" />
+          <Property Name="Num2" Type="Int32" Nullable="false" />
+          <Property Name="Num3" Type="Int32" Nullable="false" />
+          <Property Name="Num4" Type="Int32" Nullable="false" />
+          <Property Name="Num5" Type="Int32" Nullable="false" />
+          <Property Name="Num6" Type="Int32" Nullable="false" />
+          <Property Name="Multi" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="iTechCards_TwoStep">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="UserAlias" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CardGame" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CardGroup" Type="Int32" Nullable="false" />
+          <Property Name="CardSlot" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Int32" Nullable="false" />
+          <Property Name="CardName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Num1" Type="Int32" Nullable="false" />
+          <Property Name="Num2" Type="Int32" Nullable="false" />
+          <Property Name="Num3" Type="Int32" Nullable="false" />
+          <Property Name="Num4" Type="Int32" Nullable="false" />
+          <Property Name="PNum" Type="Int32" Nullable="false" />
+          <Property Name="Multi" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ITechJumpAudit">
+          <Key>
+            <PropertyRef Name="AuditID" />
+          </Key>
+          <Property Name="AuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Origin" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="EventType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ErrorCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CommentShort" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <Property Name="DateTimeStamp" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="SeverityCode" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ITechJumpAuditDetails" Relationship="Self.FK_ITechJumpAuditDetail_Audit" FromRole="ITechJumpAudit" ToRole="ITechJumpAuditDetail" />
+        </EntityType>
+        <EntityType Name="ITechJumpAuditDetail">
+          <Key>
+            <PropertyRef Name="AuditDetailID" />
+          </Key>
+          <Property Name="AuditDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RefAuditID" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorDesc" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DateTimeStamp" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="ITechJumpAudit" Relationship="Self.FK_ITechJumpAuditDetail_Audit" FromRole="ITechJumpAuditDetail" ToRole="ITechJumpAudit" />
+        </EntityType>
+        <EntityType Name="iTechWinnersCashFive">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Game" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Month" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Day" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Year" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num1" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num2" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num3" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num4" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num5" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Multi" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="FullPrize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CashPrize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SomeOneWin" Type="Int32" />
+        </EntityType>
+        <EntityType Name="iTechWinnersLocation">
+          <Key>
+            <PropertyRef Name="LID" />
+          </Key>
+          <Property Name="LID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prize" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="iTechWinnersMega">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Game" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Month" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Day" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Year" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num1" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num2" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num3" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num4" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num5" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PNum" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Multi" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="FullPrize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CashPrize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SomeOneWin" Type="Int32" />
+        </EntityType>
+        <EntityType Name="iTechWinnersPower">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Game" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Month" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Day" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Year" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num1" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num2" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num3" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num4" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num5" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PNum" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Multi" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="FullPrize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CashPrize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SomeOneWin" Type="Int32" />
+        </EntityType>
+        <EntityType Name="iTechWinnersTexa">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Game" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Month" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Day" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Year" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num1" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num2" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num3" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num4" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num5" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num6" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Multi" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="FullPrize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CashPrize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SomeOneWin" Type="Int32" />
+        </EntityType>
+        <EntityType Name="iTechWinnersTwoStep">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Game" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Month" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Day" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Year" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num1" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num2" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num3" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num4" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Num5" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Multi" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="FullPrize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CashPrize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SomeOneWin" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SubscriptionPlan">
+          <Key>
+            <PropertyRef Name="PlanCode" />
+          </Key>
+          <Property Name="PlanCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PlanName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="BillingPeriod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TrialDays" Type="Int32" />
+          <Property Name="MaxUsers" Type="Int32" />
+          <Property Name="MinNumbers" Type="Int32" />
+          <Property Name="MaxNumbers" Type="Int32" />
+          <Property Name="TicketSets" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserGuid" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordHash" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PasswordAlgo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PasswordUpdatedAt" Type="DateTime" Precision="0" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndAt" Type="DateTime" Precision="0" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastLoginAt" Type="DateTime" Precision="0" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="LastLoginUtc" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="UsersInfoes" Relationship="Self.FK_UsersInfo_Users" FromRole="Users" ToRole="UsersInfo" />
+          <NavigationProperty Name="UserSubscriptions" Relationship="Self.FK_UserSubs_Users" FromRole="Users" ToRole="UserSubscriptions" />
+        </EntityType>
+        <EntityType Name="UsersInfo">
+          <Key>
+            <PropertyRef Name="UserInfoId" />
+          </Key>
+          <Property Name="UserInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleInitial" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserAlias" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="BirthMonth" Type="Byte" />
+          <Property Name="EmailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="PhoneNum" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ReadPW" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UsersInfo_Users" FromRole="UsersInfo" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserSubscription">
+          <Key>
+            <PropertyRef Name="SubscriptionId" />
+          </Key>
+          <Property Name="SubscriptionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserAlias" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PlanCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AutoRenew" Type="Boolean" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="StartUtc" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CurrentPeriodStartUtc" Type="DateTime" Precision="0" />
+          <Property Name="CurrentPeriodEndUtc" Type="DateTime" Precision="0" />
+          <Property Name="TrialEndUtc" Type="DateTime" Precision="0" />
+          <Property Name="CanceledAtUtc" Type="DateTime" Precision="0" />
+          <Property Name="EndedAtUtc" Type="DateTime" Precision="0" />
+          <Property Name="PriceAtPurchase" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ExternalProvider" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ExternalSubscriptionId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserSubs_Users" FromRole="UserSubscriptions" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_ITechJumpAuditDetail_Audit">
+          <End Role="ITechJumpAudit" Type="Self.ITechJumpAudit" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ITechJumpAuditDetail" Type="Self.ITechJumpAuditDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ITechJumpAudit">
+              <PropertyRef Name="AuditID" />
+            </Principal>
+            <Dependent Role="ITechJumpAuditDetail">
+              <PropertyRef Name="RefAuditID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersInfo_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersInfo" Type="Self.UsersInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersInfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSubs_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="UserSubscriptions" Type="Self.UserSubscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSubscriptions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LuxDiabloEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LotteryDrawResultsCash5" EntityType="Self.LotteryDrawResultsCash5" />
+          <EntitySet Name="LotteryDrawResultsMegas" EntityType="Self.LotteryDrawResultsMega" />
+          <EntitySet Name="LotteryDrawResultsPowers" EntityType="Self.LotteryDrawResultsPower" />
+          <EntitySet Name="LotteryDrawResultsTexas" EntityType="Self.LotteryDrawResultsTexa" />
+          <EntitySet Name="LotteryDrawResultsTwoSteps" EntityType="Self.LotteryDrawResultsTwoStep" />
+          <EntitySet Name="iTechCards" EntityType="Self.iTechCard" />
+          <EntitySet Name="iTechCards_Cash5" EntityType="Self.iTechCards_Cash5" />
+          <EntitySet Name="iTechCards_Texas" EntityType="Self.iTechCards_Texas" />
+          <EntitySet Name="iTechCards_TwoStep" EntityType="Self.iTechCards_TwoStep" />
+          <EntitySet Name="ITechJumpAudits" EntityType="Self.ITechJumpAudit" />
+          <EntitySet Name="ITechJumpAuditDetails" EntityType="Self.ITechJumpAuditDetail" />
+          <EntitySet Name="iTechWinnersCashFives" EntityType="Self.iTechWinnersCashFive" />
+          <EntitySet Name="iTechWinnersLocations" EntityType="Self.iTechWinnersLocation" />
+          <EntitySet Name="iTechWinnersMegas" EntityType="Self.iTechWinnersMega" />
+          <EntitySet Name="iTechWinnersPowers" EntityType="Self.iTechWinnersPower" />
+          <EntitySet Name="iTechWinnersTexas" EntityType="Self.iTechWinnersTexa" />
+          <EntitySet Name="iTechWinnersTwoSteps" EntityType="Self.iTechWinnersTwoStep" />
+          <EntitySet Name="SubscriptionPlans" EntityType="Self.SubscriptionPlan" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UsersInfoes" EntityType="Self.UsersInfo" />
+          <EntitySet Name="UserSubscriptions" EntityType="Self.UserSubscription" />
+          <AssociationSet Name="FK_ITechJumpAuditDetail_Audit" Association="Self.FK_ITechJumpAuditDetail_Audit">
+            <End Role="ITechJumpAudit" EntitySet="ITechJumpAudits" />
+            <End Role="ITechJumpAuditDetail" EntitySet="ITechJumpAuditDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersInfo_Users" Association="Self.FK_UsersInfo_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersInfo" EntitySet="UsersInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSubs_Users" Association="Self.FK_UserSubs_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSubscriptions" EntitySet="UserSubscriptions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ITechJumpModelStoreContainer" CdmEntityContainer="LuxDiabloEntities">
+          <EntitySetMapping Name="LotteryDrawResultsCash5">
+            <EntityTypeMapping TypeName="ITechJumpModel.LotteryDrawResultsCash5">
+              <MappingFragment StoreEntitySet="LotteryDrawResultsCash5">
+                <ScalarProperty Name="ResultID" ColumnName="ResultID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserAlias" ColumnName="UserAlias" />
+                <ScalarProperty Name="CardName" ColumnName="CardName" />
+                <ScalarProperty Name="GameName" ColumnName="GameName" />
+                <ScalarProperty Name="WID" ColumnName="WID" />
+                <ScalarProperty Name="DrawDate" ColumnName="DrawDate" />
+                <ScalarProperty Name="Num1" ColumnName="Num1" />
+                <ScalarProperty Name="Num2" ColumnName="Num2" />
+                <ScalarProperty Name="Num3" ColumnName="Num3" />
+                <ScalarProperty Name="Num4" ColumnName="Num4" />
+                <ScalarProperty Name="Num5" ColumnName="Num5" />
+                <ScalarProperty Name="UNum1" ColumnName="UNum1" />
+                <ScalarProperty Name="UNum2" ColumnName="UNum2" />
+                <ScalarProperty Name="UNum3" ColumnName="UNum3" />
+                <ScalarProperty Name="UNum4" ColumnName="UNum4" />
+                <ScalarProperty Name="UNum5" ColumnName="UNum5" />
+                <ScalarProperty Name="Winner" ColumnName="Winner" />
+                <ScalarProperty Name="RequestMatch" ColumnName="RequestMatch" />
+                <ScalarProperty Name="ActualMatch" ColumnName="ActualMatch" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="EMailSent" ColumnName="EMailSent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LotteryDrawResultsMegas">
+            <EntityTypeMapping TypeName="ITechJumpModel.LotteryDrawResultsMega">
+              <MappingFragment StoreEntitySet="LotteryDrawResultsMega">
+                <ScalarProperty Name="ResultID" ColumnName="ResultID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserAlias" ColumnName="UserAlias" />
+                <ScalarProperty Name="CardName" ColumnName="CardName" />
+                <ScalarProperty Name="GameName" ColumnName="GameName" />
+                <ScalarProperty Name="WID" ColumnName="WID" />
+                <ScalarProperty Name="DrawDate" ColumnName="DrawDate" />
+                <ScalarProperty Name="Num1" ColumnName="Num1" />
+                <ScalarProperty Name="Num2" ColumnName="Num2" />
+                <ScalarProperty Name="Num3" ColumnName="Num3" />
+                <ScalarProperty Name="Num4" ColumnName="Num4" />
+                <ScalarProperty Name="Num5" ColumnName="Num5" />
+                <ScalarProperty Name="PNum" ColumnName="PNum" />
+                <ScalarProperty Name="UNum1" ColumnName="UNum1" />
+                <ScalarProperty Name="UNum2" ColumnName="UNum2" />
+                <ScalarProperty Name="UNum3" ColumnName="UNum3" />
+                <ScalarProperty Name="UNum4" ColumnName="UNum4" />
+                <ScalarProperty Name="UNum5" ColumnName="UNum5" />
+                <ScalarProperty Name="UPNum" ColumnName="UPNum" />
+                <ScalarProperty Name="Winner" ColumnName="Winner" />
+                <ScalarProperty Name="RequestMatch" ColumnName="RequestMatch" />
+                <ScalarProperty Name="ActualMatch" ColumnName="ActualMatch" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="EMailSent" ColumnName="EMailSent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LotteryDrawResultsPowers">
+            <EntityTypeMapping TypeName="ITechJumpModel.LotteryDrawResultsPower">
+              <MappingFragment StoreEntitySet="LotteryDrawResultsPower">
+                <ScalarProperty Name="ResultID" ColumnName="ResultID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserAlias" ColumnName="UserAlias" />
+                <ScalarProperty Name="CardName" ColumnName="CardName" />
+                <ScalarProperty Name="GameName" ColumnName="GameName" />
+                <ScalarProperty Name="WID" ColumnName="WID" />
+                <ScalarProperty Name="DrawDate" ColumnName="DrawDate" />
+                <ScalarProperty Name="Num1" ColumnName="Num1" />
+                <ScalarProperty Name="Num2" ColumnName="Num2" />
+                <ScalarProperty Name="Num3" ColumnName="Num3" />
+                <ScalarProperty Name="Num4" ColumnName="Num4" />
+                <ScalarProperty Name="Num5" ColumnName="Num5" />
+                <ScalarProperty Name="PNum" ColumnName="PNum" />
+                <ScalarProperty Name="UNum1" ColumnName="UNum1" />
+                <ScalarProperty Name="UNum2" ColumnName="UNum2" />
+                <ScalarProperty Name="UNum3" ColumnName="UNum3" />
+                <ScalarProperty Name="UNum4" ColumnName="UNum4" />
+                <ScalarProperty Name="UNum5" ColumnName="UNum5" />
+                <ScalarProperty Name="UPNum" ColumnName="UPNum" />
+                <ScalarProperty Name="Winner" ColumnName="Winner" />
+                <ScalarProperty Name="RequestMatch" ColumnName="RequestMatch" />
+                <ScalarProperty Name="ActualMatch" ColumnName="ActualMatch" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="EMailSent" ColumnName="EMailSent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LotteryDrawResultsTexas">
+            <EntityTypeMapping TypeName="ITechJumpModel.LotteryDrawResultsTexa">
+              <MappingFragment StoreEntitySet="LotteryDrawResultsTexas">
+                <ScalarProperty Name="ResultID" ColumnName="ResultID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserAlias" ColumnName="UserAlias" />
+                <ScalarProperty Name="CardName" ColumnName="CardName" />
+                <ScalarProperty Name="GameName" ColumnName="GameName" />
+                <ScalarProperty Name="WID" ColumnName="WID" />
+                <ScalarProperty Name="DrawDate" ColumnName="DrawDate" />
+                <ScalarProperty Name="Num1" ColumnName="Num1" />
+                <ScalarProperty Name="Num2" ColumnName="Num2" />
+                <ScalarProperty Name="Num3" ColumnName="Num3" />
+                <ScalarProperty Name="Num4" ColumnName="Num4" />
+                <ScalarProperty Name="Num5" ColumnName="Num5" />
+                <ScalarProperty Name="Num6" ColumnName="Num6" />
+                <ScalarProperty Name="UNum1" ColumnName="UNum1" />
+                <ScalarProperty Name="UNum2" ColumnName="UNum2" />
+                <ScalarProperty Name="UNum3" ColumnName="UNum3" />
+                <ScalarProperty Name="UNum4" ColumnName="UNum4" />
+                <ScalarProperty Name="UNum5" ColumnName="UNum5" />
+                <ScalarProperty Name="UNum6" ColumnName="UNum6" />
+                <ScalarProperty Name="Winner" ColumnName="Winner" />
+                <ScalarProperty Name="RequestMatch" ColumnName="RequestMatch" />
+                <ScalarProperty Name="ActualMatch" ColumnName="ActualMatch" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="EMailSent" ColumnName="EMailSent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LotteryDrawResultsTwoSteps">
+            <EntityTypeMapping TypeName="ITechJumpModel.LotteryDrawResultsTwoStep">
+              <MappingFragment StoreEntitySet="LotteryDrawResultsTwoStep">
+                <ScalarProperty Name="ResultID" ColumnName="ResultID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserAlias" ColumnName="UserAlias" />
+                <ScalarProperty Name="CardName" ColumnName="CardName" />
+                <ScalarProperty Name="GameName" ColumnName="GameName" />
+                <ScalarProperty Name="WID" ColumnName="WID" />
+                <ScalarProperty Name="DrawDate" ColumnName="DrawDate" />
+                <ScalarProperty Name="Num1" ColumnName="Num1" />
+                <ScalarProperty Name="Num2" ColumnName="Num2" />
+                <ScalarProperty Name="Num3" ColumnName="Num3" />
+                <ScalarProperty Name="Num4" ColumnName="Num4" />
+                <ScalarProperty Name="PNum" ColumnName="PNum" />
+                <ScalarProperty Name="UNum1" ColumnName="UNum1" />
+                <ScalarProperty Name="UNum2" ColumnName="UNum2" />
+                <ScalarProperty Name="UNum3" ColumnName="UNum3" />
+                <ScalarProperty Name="UNum4" ColumnName="UNum4" />
+                <ScalarProperty Name="UPNum" ColumnName="UPNum" />
+                <ScalarProperty Name="Winner" ColumnName="Winner" />
+                <ScalarProperty Name="RequestMatch" ColumnName="RequestMatch" />
+                <ScalarProperty Name="ActualMatch" ColumnName="ActualMatch" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="EMailSent" ColumnName="EMailSent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iTechCards">
+            <EntityTypeMapping TypeName="ITechJumpModel.iTechCard">
+              <MappingFragment StoreEntitySet="iTechCards">
+                <ScalarProperty Name="WID" ColumnName="WID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserAlias" ColumnName="UserAlias" />
+                <ScalarProperty Name="CDate" ColumnName="CDate" />
+                <ScalarProperty Name="CardGame" ColumnName="CardGame" />
+                <ScalarProperty Name="CardGroup" ColumnName="CardGroup" />
+                <ScalarProperty Name="CardSlot" ColumnName="CardSlot" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CardName" ColumnName="CardName" />
+                <ScalarProperty Name="Num1" ColumnName="Num1" />
+                <ScalarProperty Name="Num2" ColumnName="Num2" />
+                <ScalarProperty Name="Num3" ColumnName="Num3" />
+                <ScalarProperty Name="Num4" ColumnName="Num4" />
+                <ScalarProperty Name="Num5" ColumnName="Num5" />
+                <ScalarProperty Name="PNum" ColumnName="PNum" />
+                <ScalarProperty Name="Multi" ColumnName="Multi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iTechCards_Cash5">
+            <EntityTypeMapping TypeName="ITechJumpModel.iTechCards_Cash5">
+              <MappingFragment StoreEntitySet="iTechCards_Cash5">
+                <ScalarProperty Name="WID" ColumnName="WID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserAlias" ColumnName="UserAlias" />
+                <ScalarProperty Name="CDate" ColumnName="CDate" />
+                <ScalarProperty Name="CardGame" ColumnName="CardGame" />
+                <ScalarProperty Name="CardGroup" ColumnName="CardGroup" />
+                <ScalarProperty Name="CardSlot" ColumnName="CardSlot" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CardName" ColumnName="CardName" />
+                <ScalarProperty Name="Num1" ColumnName="Num1" />
+                <ScalarProperty Name="Num2" ColumnName="Num2" />
+                <ScalarProperty Name="Num3" ColumnName="Num3" />
+                <ScalarProperty Name="Num4" ColumnName="Num4" />
+                <ScalarProperty Name="Num5" ColumnName="Num5" />
+                <ScalarProperty Name="Multi" ColumnName="Multi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iTechCards_Texas">
+            <EntityTypeMapping TypeName="ITechJumpModel.iTechCards_Texas">
+              <MappingFragment StoreEntitySet="iTechCards_Texas">
+                <ScalarProperty Name="WID" ColumnName="WID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserAlias" ColumnName="UserAlias" />
+                <ScalarProperty Name="CDate" ColumnName="CDate" />
+                <ScalarProperty Name="CardGame" ColumnName="CardGame" />
+                <ScalarProperty Name="CardGroup" ColumnName="CardGroup" />
+                <ScalarProperty Name="CardSlot" ColumnName="CardSlot" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CardName" ColumnName="CardName" />
+                <ScalarProperty Name="Num1" ColumnName="Num1" />
+                <ScalarProperty Name="Num2" ColumnName="Num2" />
+                <ScalarProperty Name="Num3" ColumnName="Num3" />
+                <ScalarProperty Name="Num4" ColumnName="Num4" />
+                <ScalarProperty Name="Num5" ColumnName="Num5" />
+                <ScalarProperty Name="Num6" ColumnName="Num6" />
+                <ScalarProperty Name="Multi" ColumnName="Multi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iTechCards_TwoStep">
+            <EntityTypeMapping TypeName="ITechJumpModel.iTechCards_TwoStep">
+              <MappingFragment StoreEntitySet="iTechCards_TwoStep">
+                <ScalarProperty Name="WID" ColumnName="WID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserAlias" ColumnName="UserAlias" />
+                <ScalarProperty Name="CDate" ColumnName="CDate" />
+                <ScalarProperty Name="CardGame" ColumnName="CardGame" />
+                <ScalarProperty Name="CardGroup" ColumnName="CardGroup" />
+                <ScalarProperty Name="CardSlot" ColumnName="CardSlot" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CardName" ColumnName="CardName" />
+                <ScalarProperty Name="Num1" ColumnName="Num1" />
+                <ScalarProperty Name="Num2" ColumnName="Num2" />
+                <ScalarProperty Name="Num3" ColumnName="Num3" />
+                <ScalarProperty Name="Num4" ColumnName="Num4" />
+                <ScalarProperty Name="PNum" ColumnName="PNum" />
+                <ScalarProperty Name="Multi" ColumnName="Multi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ITechJumpAudits">
+            <EntityTypeMapping TypeName="ITechJumpModel.ITechJumpAudit">
+              <MappingFragment StoreEntitySet="ITechJumpAudit">
+                <ScalarProperty Name="AuditID" ColumnName="AuditID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Origin" ColumnName="Origin" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+                <ScalarProperty Name="CommentShort" ColumnName="CommentShort" />
+                <ScalarProperty Name="DateTimeStamp" ColumnName="DateTimeStamp" />
+                <ScalarProperty Name="SeverityCode" ColumnName="SeverityCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ITechJumpAuditDetails">
+            <EntityTypeMapping TypeName="ITechJumpModel.ITechJumpAuditDetail">
+              <MappingFragment StoreEntitySet="ITechJumpAuditDetail">
+                <ScalarProperty Name="AuditDetailID" ColumnName="AuditDetailID" />
+                <ScalarProperty Name="RefAuditID" ColumnName="RefAuditID" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ErrorDesc" ColumnName="ErrorDesc" />
+                <ScalarProperty Name="DateTimeStamp" ColumnName="DateTimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iTechWinnersCashFives">
+            <EntityTypeMapping TypeName="ITechJumpModel.iTechWinnersCashFive">
+              <MappingFragment StoreEntitySet="iTechWinnersCashFive">
+                <ScalarProperty Name="WID" ColumnName="WID" />
+                <ScalarProperty Name="Game" ColumnName="Game" />
+                <ScalarProperty Name="GDate" ColumnName="GDate" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Num1" ColumnName="Num1" />
+                <ScalarProperty Name="Num2" ColumnName="Num2" />
+                <ScalarProperty Name="Num3" ColumnName="Num3" />
+                <ScalarProperty Name="Num4" ColumnName="Num4" />
+                <ScalarProperty Name="Num5" ColumnName="Num5" />
+                <ScalarProperty Name="Multi" ColumnName="Multi" />
+                <ScalarProperty Name="FullPrize" ColumnName="FullPrize" />
+                <ScalarProperty Name="CashPrize" ColumnName="CashPrize" />
+                <ScalarProperty Name="SomeOneWin" ColumnName="SomeOneWin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iTechWinnersLocations">
+            <EntityTypeMapping TypeName="ITechJumpModel.iTechWinnersLocation">
+              <MappingFragment StoreEntitySet="iTechWinnersLocation">
+                <ScalarProperty Name="LID" ColumnName="LID" />
+                <ScalarProperty Name="WID" ColumnName="WID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Prize" ColumnName="Prize" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iTechWinnersMegas">
+            <EntityTypeMapping TypeName="ITechJumpModel.iTechWinnersMega">
+              <MappingFragment StoreEntitySet="iTechWinnersMega">
+                <ScalarProperty Name="WID" ColumnName="WID" />
+                <ScalarProperty Name="Game" ColumnName="Game" />
+                <ScalarProperty Name="GDate" ColumnName="GDate" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Num1" ColumnName="Num1" />
+                <ScalarProperty Name="Num2" ColumnName="Num2" />
+                <ScalarProperty Name="Num3" ColumnName="Num3" />
+                <ScalarProperty Name="Num4" ColumnName="Num4" />
+                <ScalarProperty Name="Num5" ColumnName="Num5" />
+                <ScalarProperty Name="PNum" ColumnName="PNum" />
+                <ScalarProperty Name="Multi" ColumnName="Multi" />
+                <ScalarProperty Name="FullPrize" ColumnName="FullPrize" />
+                <ScalarProperty Name="CashPrize" ColumnName="CashPrize" />
+                <ScalarProperty Name="SomeOneWin" ColumnName="SomeOneWin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iTechWinnersPowers">
+            <EntityTypeMapping TypeName="ITechJumpModel.iTechWinnersPower">
+              <MappingFragment StoreEntitySet="iTechWinnersPower">
+                <ScalarProperty Name="WID" ColumnName="WID" />
+                <ScalarProperty Name="Game" ColumnName="Game" />
+                <ScalarProperty Name="GDate" ColumnName="GDate" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Num1" ColumnName="Num1" />
+                <ScalarProperty Name="Num2" ColumnName="Num2" />
+                <ScalarProperty Name="Num3" ColumnName="Num3" />
+                <ScalarProperty Name="Num4" ColumnName="Num4" />
+                <ScalarProperty Name="Num5" ColumnName="Num5" />
+                <ScalarProperty Name="PNum" ColumnName="PNum" />
+                <ScalarProperty Name="Multi" ColumnName="Multi" />
+                <ScalarProperty Name="FullPrize" ColumnName="FullPrize" />
+                <ScalarProperty Name="CashPrize" ColumnName="CashPrize" />
+                <ScalarProperty Name="SomeOneWin" ColumnName="SomeOneWin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iTechWinnersTexas">
+            <EntityTypeMapping TypeName="ITechJumpModel.iTechWinnersTexa">
+              <MappingFragment StoreEntitySet="iTechWinnersTexas">
+                <ScalarProperty Name="WID" ColumnName="WID" />
+                <ScalarProperty Name="Game" ColumnName="Game" />
+                <ScalarProperty Name="GDate" ColumnName="GDate" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Num1" ColumnName="Num1" />
+                <ScalarProperty Name="Num2" ColumnName="Num2" />
+                <ScalarProperty Name="Num3" ColumnName="Num3" />
+                <ScalarProperty Name="Num4" ColumnName="Num4" />
+                <ScalarProperty Name="Num5" ColumnName="Num5" />
+                <ScalarProperty Name="Num6" ColumnName="Num6" />
+                <ScalarProperty Name="Multi" ColumnName="Multi" />
+                <ScalarProperty Name="FullPrize" ColumnName="FullPrize" />
+                <ScalarProperty Name="CashPrize" ColumnName="CashPrize" />
+                <ScalarProperty Name="SomeOneWin" ColumnName="SomeOneWin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iTechWinnersTwoSteps">
+            <EntityTypeMapping TypeName="ITechJumpModel.iTechWinnersTwoStep">
+              <MappingFragment StoreEntitySet="iTechWinnersTwoStep">
+                <ScalarProperty Name="WID" ColumnName="WID" />
+                <ScalarProperty Name="Game" ColumnName="Game" />
+                <ScalarProperty Name="GDate" ColumnName="GDate" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Num1" ColumnName="Num1" />
+                <ScalarProperty Name="Num2" ColumnName="Num2" />
+                <ScalarProperty Name="Num3" ColumnName="Num3" />
+                <ScalarProperty Name="Num4" ColumnName="Num4" />
+                <ScalarProperty Name="Num5" ColumnName="Num5" />
+                <ScalarProperty Name="Multi" ColumnName="Multi" />
+                <ScalarProperty Name="FullPrize" ColumnName="FullPrize" />
+                <ScalarProperty Name="CashPrize" ColumnName="CashPrize" />
+                <ScalarProperty Name="SomeOneWin" ColumnName="SomeOneWin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubscriptionPlans">
+            <EntityTypeMapping TypeName="ITechJumpModel.SubscriptionPlan">
+              <MappingFragment StoreEntitySet="SubscriptionPlans">
+                <ScalarProperty Name="PlanCode" ColumnName="PlanCode" />
+                <ScalarProperty Name="PlanName" ColumnName="PlanName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="BillingPeriod" ColumnName="BillingPeriod" />
+                <ScalarProperty Name="TrialDays" ColumnName="TrialDays" />
+                <ScalarProperty Name="MaxUsers" ColumnName="MaxUsers" />
+                <ScalarProperty Name="MinNumbers" ColumnName="MinNumbers" />
+                <ScalarProperty Name="MaxNumbers" ColumnName="MaxNumbers" />
+                <ScalarProperty Name="TicketSets" ColumnName="TicketSets" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ITechJumpModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="PasswordAlgo" ColumnName="PasswordAlgo" />
+                <ScalarProperty Name="PasswordUpdatedAt" ColumnName="PasswordUpdatedAt" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneConfirmed" ColumnName="PhoneConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndAt" ColumnName="LockoutEndAt" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastLoginAt" ColumnName="LastLoginAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="LastLoginUtc" ColumnName="LastLoginUtc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersInfoes">
+            <EntityTypeMapping TypeName="ITechJumpModel.UsersInfo">
+              <MappingFragment StoreEntitySet="UsersInfo">
+                <ScalarProperty Name="UserInfoId" ColumnName="UserInfoId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleInitial" ColumnName="MiddleInitial" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserAlias" ColumnName="UserAlias" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="BirthMonth" ColumnName="BirthMonth" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+                <ScalarProperty Name="ReadPW" ColumnName="ReadPW" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSubscriptions">
+            <EntityTypeMapping TypeName="ITechJumpModel.UserSubscription">
+              <MappingFragment StoreEntitySet="UserSubscriptions">
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserAlias" ColumnName="UserAlias" />
+                <ScalarProperty Name="PlanCode" ColumnName="PlanCode" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AutoRenew" ColumnName="AutoRenew" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="StartUtc" ColumnName="StartUtc" />
+                <ScalarProperty Name="CurrentPeriodStartUtc" ColumnName="CurrentPeriodStartUtc" />
+                <ScalarProperty Name="CurrentPeriodEndUtc" ColumnName="CurrentPeriodEndUtc" />
+                <ScalarProperty Name="TrialEndUtc" ColumnName="TrialEndUtc" />
+                <ScalarProperty Name="CanceledAtUtc" ColumnName="CanceledAtUtc" />
+                <ScalarProperty Name="EndedAtUtc" ColumnName="EndedAtUtc" />
+                <ScalarProperty Name="PriceAtPurchase" ColumnName="PriceAtPurchase" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="ExternalProvider" ColumnName="ExternalProvider" />
+                <ScalarProperty Name="ExternalSubscriptionId" ColumnName="ExternalSubscriptionId" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

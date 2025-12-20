@@ -1,0 +1,168 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EmpireOneMedia — Splash</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Top-right version icon */
+        .version-icon {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            border: 2px solid #22d3ee;
+            color: #22d3ee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            user-select: none;
+            transition: transform .25s, background .25s, color .25s;
+        }
+
+            .version-icon:hover {
+                transform: scale(1.08);
+                background: #22d3ee;
+                color: #0f172a;
+            }
+
+            .version-icon::after {
+                content: "Version 251216.10 | CreatedBy : WDBeaty";
+                position: absolute;
+                top: 50%;
+                right: 110%;
+                transform: translateY(-50%);
+                background: #22d3ee;
+                color: #0f172a;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 12px;
+                white-space: nowrap;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity .25s, right .25s;
+            }
+
+            .version-icon:hover::after {
+                opacity: 1;
+                right: 120%;
+            }
+
+        /* Container that can row-or-column swap */
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(12px, 4vw, 36px);
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1000ms ease forwards;
+        }
+
+        /* Each word is its own scalable block */
+        .word {
+            color: #22d3ee;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: .02em;
+            text-shadow: 0 0 20px rgba(34,211,238,0.6);
+            font-size: clamp(36px, 10vw, 160px);
+            display: inline-block;
+        }
+
+            .word.empire {
+                font-size: clamp(36px, 9.5vw, 160px);
+            }
+
+            .word.one {
+                font-size: clamp(36px, 9vw, 150px);
+            }
+
+            .word.media {
+                font-size: clamp(36px, 9.5vw, 160px);
+            }
+
+        /* Bouncing key letters */
+        .bounce {
+            display: inline-block;
+            animation: bounce 1.8s ease-in-out infinite;
+        }
+
+            .bounce.e {
+                animation-delay: 0s;
+            }
+
+            .bounce.o {
+                animation-delay: .4s;
+            }
+
+            .bounce.m {
+                animation-delay: .8s;
+            }
+
+        /* Stack on small screens */
+        @media (max-width: 640px) {
+            .logo-wrap {
+                flex-direction: column;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        @keyframes bounce {
+            0%,100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-15px)
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Version bubble -->
+    <div class="version-icon">V</div>
+
+    <!-- Three independently resizing words -->
+    <div class="logo-wrap" aria-label="Empire One Media">
+        <span class="word empire">
+            <span class="bounce e">E</span>mpire
+        </span>
+        <span class="word one">
+            <span class="bounce o">O</span>ne
+        </span>
+        <span class="word media">
+            <span class="bounce m">M</span>edia
+        </span>
+    </div>
+</body>
+</html>
