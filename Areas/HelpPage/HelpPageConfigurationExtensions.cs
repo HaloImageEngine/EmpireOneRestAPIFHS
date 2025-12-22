@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using EmpireOneRestAPIITJ.Areas.HelpPage.ModelDescriptions;
-using EmpireOneRestAPIITJ.Areas.HelpPage.Models;
+using EmpireOneRestAPIFHS.Areas.HelpPage.ModelDescriptions;
+using EmpireOneRestAPIFHS.Areas.HelpPage.Models;
 
-namespace EmpireOneRestAPIITJ.Areas.HelpPage
+namespace EmpireOneRestAPIFHS.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

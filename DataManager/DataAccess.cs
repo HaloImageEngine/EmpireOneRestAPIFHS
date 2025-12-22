@@ -1,7 +1,7 @@
 ﻿using DocumentFormat.OpenXml.Office.CustomXsn;
 using DocumentFormat.OpenXml.Office.SpreadSheetML.Y2023.MsForms;
 using DocumentFormat.OpenXml.Spreadsheet;
-using EmpireOneRestAPIITJ.Models;
+using EmpireOneRestAPIFHS.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EmpireOneRestAPIITJ.DataManager
+namespace EmpireOneRestAPIFHS.DataManager
 {
     public class DataAccess
     {
@@ -21,9 +21,9 @@ namespace EmpireOneRestAPIITJ.DataManager
         public DataAccess()
         {
             // Read from Web.config <connectionStrings>
-            var cs = ConfigurationManager.ConnectionStrings["ITechJumpDB"]?.ConnectionString;
+            var cs = ConfigurationManager.ConnectionStrings["CMSDemoDB"]?.ConnectionString;
             if (string.IsNullOrWhiteSpace(cs))
-                throw new InvalidOperationException("Connection string 'ITechJumpDB' not found in Web.config.");
+                throw new InvalidOperationException("Connection string 'CMSDemoDB' not found in Web.config.");
 
             _cs = cs;
         }

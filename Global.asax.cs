@@ -2,7 +2,7 @@
 using System.Web;
 using System.Web.Http;
 
-namespace EmpireOneRestAPIITJ
+namespace EmpireOneRestAPIFHS
 {
     public class WebApiApplication : HttpApplication
     {

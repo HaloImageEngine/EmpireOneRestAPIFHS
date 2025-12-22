@@ -6,21 +6,21 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.ComponentModel.DataAnnotations;
-namespace EmpireOneRestAPIITJ
+
+namespace EmpireOneRestAPIFHS
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Users
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Users()
         {
-            this.UsersInfoes = new HashSet<UsersInfo>();
-            this.UserSubscriptions = new HashSet<UserSubscription>();
+            this.UsersInfo = new HashSet<UsersInfo>();
+            this.UserSubscriptions = new HashSet<UserSubscriptions>();
         }
-        [Key]
+    
         public int UserId { get; set; }
         public System.Guid UserGuid { get; set; }
         public string UserName { get; set; }
@@ -44,8 +44,8 @@ namespace EmpireOneRestAPIITJ
         public Nullable<System.DateTime> LastLoginUtc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsersInfo> UsersInfoes { get; set; }
+        public virtual ICollection<UsersInfo> UsersInfo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserSubscription> UserSubscriptions { get; set; }
+        public virtual ICollection<UserSubscriptions> UserSubscriptions { get; set; }
     }
 }

@@ -4,13 +4,11 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace EmpireOneRestAPIITJ.Models
+namespace EmpireOneRestAPIFHS.Models
 {
 
     public class ApplicationDbContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
-        public DbSet<UserSubscription> UserSubscriptions { get; set; }
-        public DbSet<SubscriptionPlan> SubscriptionPlans { get; set; }
+
     }
 }

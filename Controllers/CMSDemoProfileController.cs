@@ -1,7 +1,7 @@
 ﻿using DocumentFormat.OpenXml.EMMA;
-using EmpireOneRestAPIITJ.Controllers;
-using EmpireOneRestAPIITJ.DataManager;
-using EmpireOneRestAPIITJ.Models;
+using EmpireOneRestAPIFHS.Controllers;
+using EmpireOneRestAPIFHS.DataManager;
+using EmpireOneRestAPIFHS.Models;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Configuration;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
-namespace EmpireOneRestAPIITJ.DataManager
+namespace EmpireOneRestAPIFHS.DataManager
 .Controllers
 {
     // CORS for TechJump frontends + localhost dev
@@ -19,25 +19,25 @@ namespace EmpireOneRestAPIITJ.DataManager
         origins:
             "http://localhost:4200," +
             "https://localhost:4200," +
-            "https://itechjump.com," +
-            "https://www.itechjump.com," +
+            "https://CMSDemo.com," +
+            "https://www.CMSDemo.com," +
             "https://techinterviewjump.com," +
             "https://www.techinterviewjump.com",
         headers: "*",
         methods: "*")]
     [RoutePrefix("api/profile")]
-    public class ITechJumpProfileController : ApiController
+    public class CMSDemoProfileController : ApiController
     {
         private readonly DataAccess02 _data = new DataAccess02();
         private readonly string _connString =
-            ConfigurationManager.ConnectionStrings["ITechJumpDB"]?.ConnectionString;
+            ConfigurationManager.ConnectionStrings["CMSDemoDB"]?.ConnectionString;
 
-        // GET /api/ITechjumpsubscription/db-ping
+        // GET /api/CMSDemoImageLoad/db-ping
         [HttpGet, Route("db-ping")]
         public async Task<IHttpActionResult> DbPing()
         {
             if (string.IsNullOrWhiteSpace(_connString))
-                return BadRequest("Connection string 'ITechJumpDB' not found.");
+                return BadRequest("Connection string 'CMSDemoDB' not found.");
 
             try
             {
@@ -67,16 +67,16 @@ namespace EmpireOneRestAPIITJ.DataManager
             }
         }
 
-        // POST /api/ITechjumpinsertITechCards
+        // POST /api/CMSDemoinsertITechCards
         // Body: InsertITechCards
         [HttpPost, Route("")]
-        public async Task<IHttpActionResult> Create(CreateSubscriptionRequest req)
+        public async Task<IHttpActionResult> Create(CreateImageLoadRequest req)
         {
            
             try
             {
                 using (var conn = new SqlConnection(_connString))
-                using (var cmd = new SqlCommand("Create_UserSubscriptions", conn))
+                using (var cmd = new SqlCommand("Create_UserImageLoads", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -89,18 +89,18 @@ namespace EmpireOneRestAPIITJ.DataManager
                     using (var reader = await cmd.ExecuteReaderAsync(CommandBehavior.SingleResult))
                     {
                         if (!reader.HasRows)
-                            return InternalServerError(new Exception("Create_UserSubscriptions did not return a row."));
+                            return InternalServerError(new Exception("Create_UserImageLoads did not return a row."));
 
-                        SubscriptionWithPlan created = null;
+                        ImageLoadWithPlan created = null;
                         if (await reader.ReadAsync())
-                            created = MapSubscriptionWithPlan(reader);
+                            created = MapImageLoadWithPlan(reader);
 
                         if (created == null)
-                            return InternalServerError(new Exception("Failed to map created subscription."));
+                            return InternalServerError(new Exception("Failed to map created ImageLoad."));
 
                         // 201 Created with Location header
-                        var location = new Uri(Request.RequestUri, created.SubscriptionId.ToString());
-                        return Created(location, new { ok = true, subscription = created });
+                        var location = new Uri(Request.RequestUri, created.ImageLoadId.ToString());
+                        return Created(location, new { ok = true, ImageLoad = created });
                     }
                 }
             }
@@ -118,7 +118,7 @@ namespace EmpireOneRestAPIITJ.DataManager
         /// </summary>
         /// <param name="req"></param>
         /// <returns></returns>
-        // POST /api/ITechjump/support/contact
+        // POST /api/CMSDemo/support/contact
         [HttpPost, Route("support/contact")]
         public async Task<IHttpActionResult> Insert_ITechCard_Mega(ModelSupportTicket model)
         {
@@ -179,18 +179,18 @@ namespace EmpireOneRestAPIITJ.DataManager
 
         //----------------------------------------------------------------------------------------
 
-        // GET /api/ITechjumpsubscription/{id}
+        // GET /api/CMSDemoImageLoad/{id}
         [HttpGet, Route("{id:int}")]
         public async Task<IHttpActionResult> GetById(int id)
         {
             if (string.IsNullOrWhiteSpace(_connString))
-                return BadRequest("Connection string 'ITechJumpDB' not found.");
+                return BadRequest("Connection string 'CMSDemoDB' not found.");
 
             const string sql = @"
                 SELECT us.*, p.PlanName, p.Description, p.TicketSets
-                FROM dbo.UserSubscriptions us
-                JOIN dbo.SubscriptionPlans p ON p.PlanCode = us.PlanCode
-                WHERE us.SubscriptionId = @id;
+                FROM dbo.UserImageLoads us
+                JOIN dbo.ImageLoadPlans p ON p.PlanCode = us.PlanCode
+                WHERE us.ImageLoadId = @id;
                 ";
 
             try
@@ -205,11 +205,11 @@ namespace EmpireOneRestAPIITJ.DataManager
                     {
                         if (!reader.HasRows) return NotFound();
 
-                        SubscriptionWithPlan found = null;
+                        ImageLoadWithPlan found = null;
                         if (await reader.ReadAsync())
-                            found = MapSubscriptionWithPlan(reader);
+                            found = MapImageLoadWithPlan(reader);
 
-                        return Ok(new { ok = true, subscription = found });
+                        return Ok(new { ok = true, ImageLoad = found });
                     }
                 }
             }
@@ -232,89 +232,23 @@ namespace EmpireOneRestAPIITJ.DataManager
 
 
 
-        // GET /api/ITechjumpsubscription/{plancode}
-        [HttpGet, Route("{plancode:maxlength(50)}")]   // ← valid; or just "{plancode}"
-        public async Task<IHttpActionResult> Get_PlanDetail_ByPlanCode(string plancode)
-        {
-            if (string.IsNullOrWhiteSpace(_connString))
-                return BadRequest("Connection string 'ITechJumpDB' not found.");
-
-            if (string.IsNullOrWhiteSpace(plancode))
-                return BadRequest("PlanCode is required.");
-
-            try
-            {
-                using (var conn = new SqlConnection(_connString))
-                using (var cmd = new SqlCommand("dbo.Get_Subscription_byPlanCode", conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@PlanCode", SqlDbType.VarChar, 50).Value = plancode.Trim();
-
-                    await conn.OpenAsync();
-
-                    using (var reader = await cmd.ExecuteReaderAsync(CommandBehavior.SingleRow))
-                    {
-                        if (!reader.HasRows)
-                            return NotFound();
-
-                        ModelSubscriptionPlans found = null;
-
-                        if (await reader.ReadAsync())
-                        {
-                            // Ordinals (faster + avoids typos)
-                            int oPlanCode = reader.GetOrdinal("PlanCode");
-                            int oPlanName = reader.GetOrdinal("PlanName");
-                            int oDescription = reader.GetOrdinal("Description");
-                            int oPrice = reader.GetOrdinal("Price");
-                            // int oBillingPeriod = reader.GetOrdinal("BillingPeriod"); // returned by SP but not in this model
-                            int oMinNumbers = reader.GetOrdinal("MinNumbers");
-                            int oMaxNumbers = reader.GetOrdinal("MaxNumbers");
-                            int oTicketSets = reader.GetOrdinal("TicketSets");
-                            int oIsActive = reader.GetOrdinal("IsActive");
-
-                            found = new ModelSubscriptionPlans
-                            {
-                                PlanCode = reader.IsDBNull(oPlanCode) ? null : reader.GetString(oPlanCode),
-                                PlanName = reader.IsDBNull(oPlanName) ? null : reader.GetString(oPlanName),
-                                Description = reader.IsDBNull(oDescription) ? null : reader.GetString(oDescription),
-                                Price = reader.IsDBNull(oPrice) ? 0m : reader.GetDecimal(oPrice),
-                                //MinNumbers = reader.IsDBNull(oMinNumbers) ? (int?)null : reader.GetInt32(oMinNumbers),
-                                //MaxNumbers = reader.IsDBNull(oMaxNumbers) ? (int?)null : reader.GetInt32(oMaxNumbers),
-                                //TicketSets = reader.IsDBNull(oTicketSets) ? (int?)null : reader.GetInt32(oTicketSets),
-                                IsActive = !reader.IsDBNull(oIsActive) && reader.GetBoolean(oIsActive)
-                            };
-                        }
-
-                        return Ok(new { ok = true, subscription = found });
-                    }
-                }
-            }
-            catch (SqlException ex)
-            {
-                return InternalServerError(new Exception($"SQL error {ex.Number}: {ex.Message}"));
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-        }
-
+      
 
         // --------------------------
         // Helpers / DTOs
         // --------------------------
 
-        private static SubscriptionWithPlan MapSubscriptionWithPlan(SqlDataReader r)
+        private static ImageLoadWithPlan MapImageLoadWithPlan(SqlDataReader r)
         {
             // Guard for DBNull on nullable fields
             DateTime? dt(object o) => o == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(o);
             int? ni(object o) => o == DBNull.Value ? (int?)null : Convert.ToInt32(o);
             string ns(object o) => o == DBNull.Value ? null : Convert.ToString(o);
 
-            return new SubscriptionWithPlan
+            return new ImageLoadWithPlan
             {
-                // UserSubscriptions
-                SubscriptionId = Convert.ToInt32(r["SubscriptionId"]),
+                // UserImageLoads
+                ImageLoadId = Convert.ToInt32(r["ImageLoadId"]),
                 UserId = Convert.ToInt32(r["UserId"]),
                 UserAlias = Convert.ToString(r["UserAlias"]),
                 PlanCode = Convert.ToString(r["PlanCode"]),
@@ -330,11 +264,11 @@ namespace EmpireOneRestAPIITJ.DataManager
                 PriceAtPurchase = Convert.ToDecimal(r["PriceAtPurchase"]),
                 Currency = Convert.ToString(r["Currency"]),
                 ExternalProvider = ns(r["ExternalProvider"]),
-                ExternalSubscriptionId = ns(r["ExternalSubscriptionId"]),
+                ExternalImageLoadId = ns(r["ExternalImageLoadId"]),
                 CreatedAt = Convert.ToDateTime(r["CreatedAt"]),
                 UpdatedAt = Convert.ToDateTime(r["UpdatedAt"]),
 
-                // From SubscriptionPlans join
+                // From ImageLoadPlans join
                 PlanName = Convert.ToString(r["PlanName"]),
                 Description = ns(r["Description"]),
                 TicketSets = ni(r["TicketSets"])
@@ -344,7 +278,7 @@ namespace EmpireOneRestAPIITJ.DataManager
 
     // --------- DTOs ---------
 
-    public sealed class CreateSubscriptionRequestProfile
+    public sealed class CreateImageLoadRequestProfile
     {
         public int UserId { get; set; }              // required
         public string UserAlias { get; set; } = "";      // exactly 8 chars
@@ -352,13 +286,13 @@ namespace EmpireOneRestAPIITJ.DataManager
         //public bool AutoRenew { get; set; } = true;    // optional, default true
         //public int Quantity { get; set; } = 1;       // optional, default 1
         //public string ExternalProvider { get; set; }     // optional
-        //public string ExternalSubscriptionId { get; set; } // optional
+        //public string ExternalImageLoadId { get; set; } // optional
     }
 
-    public sealed class SubscriptionWithPlanProfile
+    public sealed class ImageLoadWithPlanProfile
     {
-        // From UserSubscriptions
-        public int SubscriptionId { get; set; }
+        // From UserImageLoads
+        public int ImageLoadId { get; set; }
         public int UserId { get; set; }
         public string UserAlias { get; set; }
         public string PlanCode { get; set; }
@@ -374,11 +308,11 @@ namespace EmpireOneRestAPIITJ.DataManager
         public decimal PriceAtPurchase { get; set; }
         public string Currency { get; set; }
         public string ExternalProvider { get; set; }
-        public string ExternalSubscriptionId { get; set; }
+        public string ExternalImageLoadId { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        // From SubscriptionPlans join
+        // From ImageLoadPlans join
         public string PlanName { get; set; }
         public string Description { get; set; }
         public int? TicketSets { get; set; }

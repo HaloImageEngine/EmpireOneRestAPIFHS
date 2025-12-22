@@ -6,15 +6,14 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.ComponentModel.DataAnnotations;
-namespace EmpireOneRestAPIITJ
+
+namespace EmpireOneRestAPIFHS
 {
     using System;
     using System.Collections.Generic;
     
     public partial class UsersInfo
     {
-        [Key]
         public int UserInfoId { get; set; }
         public int UserId { get; set; }
         public string FirstName { get; set; }
@@ -32,6 +31,6 @@ namespace EmpireOneRestAPIITJ
         public string PhoneNum { get; set; }
         public string ReadPW { get; set; }
     
-        public virtual User User { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

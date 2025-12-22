@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace EmpireOneRestAPIITJ.Areas.HelpPage
+namespace EmpireOneRestAPIFHS.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

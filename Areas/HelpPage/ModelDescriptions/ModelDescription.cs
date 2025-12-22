@@ -1,6 +1,6 @@
 using System;
 
-namespace EmpireOneRestAPIITJ.Areas.HelpPage.ModelDescriptions
+namespace EmpireOneRestAPIFHS.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

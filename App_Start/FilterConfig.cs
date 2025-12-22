@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace EmpireOneRestAPIITJ
+namespace EmpireOneRestAPIFHS
 {
     public class FilterConfig
     {

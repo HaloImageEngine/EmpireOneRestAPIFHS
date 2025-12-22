@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="haloimag_firehorseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FH_Images">
+          <Key>
+            <PropertyRef Name="FH_Image_Key" />
+          </Key>
+          <Property Name="FH_Image_Key" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserAlias" Type="varchar" MaxLength="20" />
+          <Property Name="Image_Location_URL" Type="varchar" MaxLength="500" />
+          <Property Name="Image_Location_Folder" Type="varchar" MaxLength="500" />
+          <Property Name="Image_Date" Type="date" />
+          <Property Name="Image_Description" Type="varchar" MaxLength="200" />
+          <Property Name="Image_Size" Type="int" />
+          <Property Name="Image_Width" Type="int" />
+          <Property Name="Image_Height" Type="int" />
+          <Property Name="Image_Dimentions" Type="varchar" MaxLength="50" />
+          <Property Name="Image_Type" Type="varchar" MaxLength="20" />
+          <Property Name="Image_Rotation" Type="varchar" MaxLength="1" />
+          <Property Name="Image_Category_ID" Type="int" />
+          <Property Name="Image_Album_ID" Type="int" />
+          <Property Name="Image_Album_Name" Type="varchar" MaxLength="20" />
+          <Property Name="Image_Reference" Type="varchar" MaxLength="20" />
+          <Property Name="Image_Poster" Type="varchar" MaxLength="1" />
+          <Property Name="Rate1" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PasswordHash" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PasswordAlgo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PasswordUpdatedAt" Type="datetime2" Precision="0" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="25" />
+          <Property Name="PhoneConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndAt" Type="datetime2" Precision="0" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastLoginAt" Type="datetime2" Precision="0" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="LastLoginUtc" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="UsersInfo">
+          <Key>
+            <PropertyRef Name="UserInfoId" />
+          </Key>
+          <Property Name="UserInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleInitial" Type="nchar" MaxLength="1" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserAlias" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="15" />
+          <Property Name="BirthMonth" Type="tinyint" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="PhoneNum" Type="nvarchar" MaxLength="25" />
+          <Property Name="ReadPW" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserSubscriptions">
+          <Key>
+            <PropertyRef Name="SubscriptionId" />
+          </Key>
+          <Property Name="SubscriptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserAlias" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="PlanCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AutoRenew" Type="bit" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="StartUtc" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="CurrentPeriodStartUtc" Type="datetime2" Precision="0" />
+          <Property Name="CurrentPeriodEndUtc" Type="datetime2" Precision="0" />
+          <Property Name="TrialEndUtc" Type="datetime2" Precision="0" />
+          <Property Name="CanceledAtUtc" Type="datetime2" Precision="0" />
+          <Property Name="EndedAtUtc" Type="datetime2" Precision="0" />
+          <Property Name="PriceAtPurchase" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Currency" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="ExternalProvider" Type="varchar" MaxLength="30" />
+          <Property Name="ExternalSubscriptionId" Type="varchar" MaxLength="100" />
+          <Property Name="StripePaymentIntentId" Type="varchar" MaxLength="100" />
+          <Property Name="StripePaymentMethodId" Type="varchar" MaxLength="100" />
+          <Property Name="StripeChargeId" Type="varchar" MaxLength="100" />
+          <Property Name="StripeCustomerId" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_UsersInfo_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersInfo" Type="Self.UsersInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersInfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSubs_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserSubscriptions" Type="Self.UserSubscriptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSubscriptions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="haloimag_firehorseModelStoreContainer">
+          <EntitySet Name="FH_Images" EntityType="Self.FH_Images" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersInfo" EntityType="Self.UsersInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSubscriptions" EntityType="Self.UserSubscriptions" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_UsersInfo_Users" Association="Self.FK_UsersInfo_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersInfo" EntitySet="UsersInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSubs_Users" Association="Self.FK_UserSubs_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSubscriptions" EntitySet="UserSubscriptions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="haloimag_firehorseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FH_Images">
+          <Key>
+            <PropertyRef Name="FH_Image_Key" />
+          </Key>
+          <Property Name="FH_Image_Key" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserAlias" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Image_Location_URL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Image_Location_Folder" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Image_Date" Type="DateTime" Precision="0" />
+          <Property Name="Image_Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Image_Size" Type="Int32" />
+          <Property Name="Image_Width" Type="Int32" />
+          <Property Name="Image_Height" Type="Int32" />
+          <Property Name="Image_Dimentions" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image_Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Image_Rotation" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Image_Category_ID" Type="Int32" />
+          <Property Name="Image_Album_ID" Type="Int32" />
+          <Property Name="Image_Album_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Image_Reference" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Image_Poster" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Rate1" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserGuid" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordHash" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PasswordAlgo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PasswordUpdatedAt" Type="DateTime" Precision="0" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndAt" Type="DateTime" Precision="0" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastLoginAt" Type="DateTime" Precision="0" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="LastLoginUtc" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="UsersInfo" Relationship="Self.FK_UsersInfo_Users" FromRole="Users" ToRole="UsersInfo" />
+          <NavigationProperty Name="UserSubscriptions" Relationship="Self.FK_UserSubs_Users" FromRole="Users" ToRole="UserSubscriptions" />
+        </EntityType>
+        <EntityType Name="UsersInfo">
+          <Key>
+            <PropertyRef Name="UserInfoId" />
+          </Key>
+          <Property Name="UserInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleInitial" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserAlias" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="BirthMonth" Type="Byte" />
+          <Property Name="EmailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="PhoneNum" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ReadPW" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_UsersInfo_Users" FromRole="UsersInfo" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserSubscriptions">
+          <Key>
+            <PropertyRef Name="SubscriptionId" />
+          </Key>
+          <Property Name="SubscriptionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserAlias" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PlanCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AutoRenew" Type="Boolean" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="StartUtc" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CurrentPeriodStartUtc" Type="DateTime" Precision="0" />
+          <Property Name="CurrentPeriodEndUtc" Type="DateTime" Precision="0" />
+          <Property Name="TrialEndUtc" Type="DateTime" Precision="0" />
+          <Property Name="CanceledAtUtc" Type="DateTime" Precision="0" />
+          <Property Name="EndedAtUtc" Type="DateTime" Precision="0" />
+          <Property Name="PriceAtPurchase" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ExternalProvider" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ExternalSubscriptionId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StripePaymentIntentId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StripePaymentMethodId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StripeChargeId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StripeCustomerId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RowVersion" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_UserSubs_Users" FromRole="UserSubscriptions" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_UsersInfo_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersInfo" Type="Self.UsersInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UsersInfo">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSubs_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserSubscriptions" Type="Self.UserSubscriptions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSubscriptions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="haloimag_firehorseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FH_Images" EntityType="Self.FH_Images" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="UsersInfo" EntityType="Self.UsersInfo" />
+          <EntitySet Name="UserSubscriptions" EntityType="Self.UserSubscriptions" />
+          <AssociationSet Name="FK_UsersInfo_Users" Association="Self.FK_UsersInfo_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersInfo" EntitySet="UsersInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSubs_Users" Association="Self.FK_UserSubs_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSubscriptions" EntitySet="UserSubscriptions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="haloimag_firehorseModelStoreContainer" CdmEntityContainer="haloimag_firehorseEntities">
+          <EntitySetMapping Name="FH_Images">
+            <EntityTypeMapping TypeName="haloimag_firehorseModel.FH_Images">
+              <MappingFragment StoreEntitySet="FH_Images">
+                <ScalarProperty Name="FH_Image_Key" ColumnName="FH_Image_Key" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserAlias" ColumnName="UserAlias" />
+                <ScalarProperty Name="Image_Location_URL" ColumnName="Image_Location_URL" />
+                <ScalarProperty Name="Image_Location_Folder" ColumnName="Image_Location_Folder" />
+                <ScalarProperty Name="Image_Date" ColumnName="Image_Date" />
+                <ScalarProperty Name="Image_Description" ColumnName="Image_Description" />
+                <ScalarProperty Name="Image_Size" ColumnName="Image_Size" />
+                <ScalarProperty Name="Image_Width" ColumnName="Image_Width" />
+                <ScalarProperty Name="Image_Height" ColumnName="Image_Height" />
+                <ScalarProperty Name="Image_Dimentions" ColumnName="Image_Dimentions" />
+                <ScalarProperty Name="Image_Type" ColumnName="Image_Type" />
+                <ScalarProperty Name="Image_Rotation" ColumnName="Image_Rotation" />
+                <ScalarProperty Name="Image_Category_ID" ColumnName="Image_Category_ID" />
+                <ScalarProperty Name="Image_Album_ID" ColumnName="Image_Album_ID" />
+                <ScalarProperty Name="Image_Album_Name" ColumnName="Image_Album_Name" />
+                <ScalarProperty Name="Image_Reference" ColumnName="Image_Reference" />
+                <ScalarProperty Name="Image_Poster" ColumnName="Image_Poster" />
+                <ScalarProperty Name="Rate1" ColumnName="Rate1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="haloimag_firehorseModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="PasswordAlgo" ColumnName="PasswordAlgo" />
+                <ScalarProperty Name="PasswordUpdatedAt" ColumnName="PasswordUpdatedAt" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneConfirmed" ColumnName="PhoneConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndAt" ColumnName="LockoutEndAt" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastLoginAt" ColumnName="LastLoginAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="LastLoginUtc" ColumnName="LastLoginUtc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersInfo">
+            <EntityTypeMapping TypeName="haloimag_firehorseModel.UsersInfo">
+              <MappingFragment StoreEntitySet="UsersInfo">
+                <ScalarProperty Name="UserInfoId" ColumnName="UserInfoId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleInitial" ColumnName="MiddleInitial" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserAlias" ColumnName="UserAlias" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="BirthMonth" ColumnName="BirthMonth" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+                <ScalarProperty Name="ReadPW" ColumnName="ReadPW" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSubscriptions">
+            <EntityTypeMapping TypeName="haloimag_firehorseModel.UserSubscriptions">
+              <MappingFragment StoreEntitySet="UserSubscriptions">
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserAlias" ColumnName="UserAlias" />
+                <ScalarProperty Name="PlanCode" ColumnName="PlanCode" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AutoRenew" ColumnName="AutoRenew" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="StartUtc" ColumnName="StartUtc" />
+                <ScalarProperty Name="CurrentPeriodStartUtc" ColumnName="CurrentPeriodStartUtc" />
+                <ScalarProperty Name="CurrentPeriodEndUtc" ColumnName="CurrentPeriodEndUtc" />
+                <ScalarProperty Name="TrialEndUtc" ColumnName="TrialEndUtc" />
+                <ScalarProperty Name="CanceledAtUtc" ColumnName="CanceledAtUtc" />
+                <ScalarProperty Name="EndedAtUtc" ColumnName="EndedAtUtc" />
+                <ScalarProperty Name="PriceAtPurchase" ColumnName="PriceAtPurchase" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="ExternalProvider" ColumnName="ExternalProvider" />
+                <ScalarProperty Name="ExternalSubscriptionId" ColumnName="ExternalSubscriptionId" />
+                <ScalarProperty Name="StripePaymentIntentId" ColumnName="StripePaymentIntentId" />
+                <ScalarProperty Name="StripePaymentMethodId" ColumnName="StripePaymentMethodId" />
+                <ScalarProperty Name="StripeChargeId" ColumnName="StripeChargeId" />
+                <ScalarProperty Name="StripeCustomerId" ColumnName="StripeCustomerId" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

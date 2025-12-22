@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using EmpireOneRestAPIITJ.Areas.HelpPage.ModelDescriptions;
-using EmpireOneRestAPIITJ.Areas.HelpPage.Models;
+using EmpireOneRestAPIFHS.Areas.HelpPage.ModelDescriptions;
+using EmpireOneRestAPIFHS.Areas.HelpPage.Models;
 
-namespace EmpireOneRestAPIITJ.Areas.HelpPage.Controllers
+namespace EmpireOneRestAPIFHS.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

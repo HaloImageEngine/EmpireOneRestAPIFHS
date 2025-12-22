@@ -8,7 +8,7 @@ public static class WebApiConfig
         // 1) CORS – global policy
         var cors = new EnableCorsAttribute(
             "http://localhost:4200,https://localhost:4200," +
-            "https://itechjump.com,https://www.itechjump.com," +
+            "https://CMSDemo.com,https://www.CMSDemo.com," +
             "https://techinterviewjump.com,https://www.techinterviewjump.com",
             headers: "*",
             methods: "*"

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 
 
-namespace EmpireOneRestAPIITJ.Models
+namespace EmpireOneRestAPIFHS.Models
 {
     public class ModelUser
     {

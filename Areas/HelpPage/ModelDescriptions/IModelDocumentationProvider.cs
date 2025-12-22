@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace EmpireOneRestAPIITJ.Areas.HelpPage.ModelDescriptions
+namespace EmpireOneRestAPIFHS.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

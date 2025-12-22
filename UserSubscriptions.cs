@@ -6,15 +6,14 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System.ComponentModel.DataAnnotations;
-namespace EmpireOneRestAPIITJ
+
+namespace EmpireOneRestAPIFHS
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class UserSubscription
+    public partial class UserSubscriptions
     {
-        [Key]
         public int SubscriptionId { get; set; }
         public int UserId { get; set; }
         public string UserAlias { get; set; }
@@ -32,10 +31,14 @@ namespace EmpireOneRestAPIITJ
         public string Currency { get; set; }
         public string ExternalProvider { get; set; }
         public string ExternalSubscriptionId { get; set; }
+        public string StripePaymentIntentId { get; set; }
+        public string StripePaymentMethodId { get; set; }
+        public string StripeChargeId { get; set; }
+        public string StripeCustomerId { get; set; }
         public System.DateTime CreatedAt { get; set; }
         public System.DateTime UpdatedAt { get; set; }
         public byte[] RowVersion { get; set; }
     
-        public virtual User User { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

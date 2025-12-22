@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace EmpireOneRestAPIITJ.Areas.HelpPage.ModelDescriptions
+namespace EmpireOneRestAPIFHS.Areas.HelpPage.ModelDescriptions
 {
     internal static class ModelNameHelper
     {

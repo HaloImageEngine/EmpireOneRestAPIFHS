@@ -2,8 +2,8 @@
 using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using DocumentFormat.OpenXml.Spreadsheet;
 using DocumentFormat.OpenXml.Wordprocessing;
-using EmpireOneRestAPIITJ.Models;
-using EmpireOneRestAPIITJ.Security;
+using EmpireOneRestAPIFHS.Models;
+using EmpireOneRestAPIFHS.Security;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,7 +14,7 @@ using System.Net.NetworkInformation;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EmpireOneRestAPIITJ.DataManager
+namespace EmpireOneRestAPIFHS.DataManager
 {
     //This was updated by Chat
     public class DataAccess02
@@ -25,7 +25,7 @@ namespace EmpireOneRestAPIITJ.DataManager
         public DataAccess02()
         {
 
-            dbconn = ConfigurationManager.ConnectionStrings["ITechJumpDB"]?.ConnectionString;
+            dbconn = ConfigurationManager.ConnectionStrings["CMSDemoDB"]?.ConnectionString;
 
         }
 

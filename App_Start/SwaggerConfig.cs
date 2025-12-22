@@ -3,9 +3,9 @@ using System.Web.Http;
 using WebActivatorEx;
 using Swashbuckle.Application;
 
-[assembly: PreApplicationStartMethod(typeof(EmpireOneRestAPIITJ.SwaggerConfig), "Register")]
+[assembly: PreApplicationStartMethod(typeof(EmpireOneRestAPIFHS.SwaggerConfig), "Register")]
 
-namespace EmpireOneRestAPIITJ
+namespace EmpireOneRestAPIFHS
 {
     public class SwaggerConfig
     {
@@ -16,10 +16,10 @@ namespace EmpireOneRestAPIITJ
             // Enable Swagger JSON generator (returns SwaggerEnabledConfiguration)
             var swagger = httpConfig.EnableSwagger(c =>
             {
-                c.SingleApiVersion("v251028.09", "EmpireOneRestAPIITJ (Web API 4.8)");
+                c.SingleApiVersion("v251028.09", "EmpireOneRestAPIFHS (Web API 4.8)");
 
                 // Optional: XML comments (enable in Project Properties → Build)
-                var xmlPath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin", "EmpireOneRestAPIITJ.XML");
+                var xmlPath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin", "EmpireOneRestAPIFHS.XML");
                 if (File.Exists(xmlPath))
                     c.IncludeXmlComments(xmlPath);
 

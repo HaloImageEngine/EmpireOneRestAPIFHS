@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace EmpireOneRestAPIITJ.Controllers
+namespace EmpireOneRestAPIFHS.Controllers
 {
     public class ValuesController : ApiController
     {

@@ -1,4 +1,4 @@
-namespace EmpireOneRestAPIITJ.Areas.HelpPage.ModelDescriptions
+namespace EmpireOneRestAPIFHS.Areas.HelpPage.ModelDescriptions
 {
     public class EnumValueDescription
     {

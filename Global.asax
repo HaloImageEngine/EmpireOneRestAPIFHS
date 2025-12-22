@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="EmpireOneRestAPIITJ.WebApiApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="EmpireOneRestAPIFHS.WebApiApplication" Language="C#" %>

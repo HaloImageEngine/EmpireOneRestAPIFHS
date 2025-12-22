@@ -11,7 +11,7 @@ using RoutePrefixAttribute = System.Web.Http.RoutePrefixAttribute;
 using HttpGetAttribute = System.Web.Http.HttpGetAttribute;
 using RouteAttribute = System.Web.Http.RouteAttribute;
 
-namespace EmpireOneRestAPIITJ.Controllers
+namespace EmpireOneRestAPIFHS.Controllers
 {
     [RoutePrefix("api/status")]
     public class StatusController : ApiController

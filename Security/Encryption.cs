@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace EmpireOneRestAPIITJ.Security
+namespace EmpireOneRestAPIFHS.Security
 {
     /// <summary>
     /// Password hashing utilities for .NET Framework 4.8.

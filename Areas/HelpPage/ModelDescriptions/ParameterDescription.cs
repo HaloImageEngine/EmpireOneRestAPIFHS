@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace EmpireOneRestAPIITJ.Areas.HelpPage.ModelDescriptions
+namespace EmpireOneRestAPIFHS.Areas.HelpPage.ModelDescriptions
 {
     public class ParameterDescription
     {

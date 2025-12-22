@@ -1,5 +1,5 @@
-﻿using EmpireOneRestAPIITJ.DataManager;
-using EmpireOneRestAPIITJ.Models;
+﻿using EmpireOneRestAPIFHS.DataManager;
+using EmpireOneRestAPIFHS.Models;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
-namespace EmpireOneRestAPIITJ.Controllers
+namespace EmpireOneRestAPIFHS.Controllers
 {
     // Allow calls from your frontend + (optionally) same host
     // CORS for TechJump frontends + localhost dev
@@ -16,14 +16,14 @@ namespace EmpireOneRestAPIITJ.Controllers
         origins:
             "http://localhost:4200," +
             "https://localhost:4200," +
-            "https://itechjump.com," +
-            "https://www.itechjump.com," +
+            "https://CMSDemo.com," +
+            "https://www.CMSDemo.com," +
             "https://techinterviewjump.com," +
             "https://www.techinterviewjump.com",
         headers: "*",
         methods: "*")]
-    [RoutePrefix("api/ITechJump")]
-    public class ITechJumpController : ApiController
+    [RoutePrefix("api/CMSDemo")]
+    public class CMSDemoController : ApiController
     {
         private readonly DataAccess _data1 = new DataAccess();
 
@@ -34,10 +34,10 @@ namespace EmpireOneRestAPIITJ.Controllers
         public async Task<IHttpActionResult> DbPing(CancellationToken ct)
         {
             var cs = System.Configuration.ConfigurationManager
-                .ConnectionStrings["ITechJumpDB"]?.ConnectionString;
+                .ConnectionStrings["CMSDemoDB"]?.ConnectionString;
 
             if (string.IsNullOrWhiteSpace(cs))
-                return BadRequest("Connection string 'ITechJumpDB' not found.");
+                return BadRequest("Connection string 'CMSDemoDB' not found.");
 
             try
             {

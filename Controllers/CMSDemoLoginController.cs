@@ -1,5 +1,5 @@
-﻿using EmpireOneRestAPIITJ.DataManager;
-using EmpireOneRestAPIITJ.Security; // Encryption
+﻿using EmpireOneRestAPIFHS.DataManager;
+using EmpireOneRestAPIFHS.Security; // Encryption
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
-namespace EmpireOneRestAPIITJ.DataManager.Controllers
+namespace EmpireOneRestAPIFHS.DataManager.Controllers
 {
     // CORS for TechJump frontends + localhost dev
     [EnableCors(
         origins:
             "http://localhost:4200," +
             "https://localhost:4200," +
-            "https://itechjump.com," +
-            "https://www.itechjump.com," +
+            "https://CMSDemo.com," +
+            "https://www.CMSDemo.com," +
             "https://techinterviewjump.com," +
             "https://www.techinterviewjump.com",
         headers: "*",
@@ -26,17 +26,17 @@ namespace EmpireOneRestAPIITJ.DataManager.Controllers
     /// <summary>
     /// Login & account endpoints for TechJump.
     /// </summary>
-    public class TechJumpLoginController : ApiController
+    public class CMSDemoLoginController : ApiController
     {
         private readonly DataAccess02 _data = new DataAccess02();
 
         private static string GetCs()
         {
             var cs = System.Configuration.ConfigurationManager
-                .ConnectionStrings["ITechJumpProd"]?.ConnectionString;
+                .ConnectionStrings["CMSDemoProd"]?.ConnectionString;
 
             if (string.IsNullOrWhiteSpace(cs))
-                throw new InvalidOperationException("Connection string 'ITechJumpProd' not found.");
+                throw new InvalidOperationException("Connection string 'CMSDemoProd' not found.");
 
             return cs;
         }
@@ -92,17 +92,17 @@ namespace EmpireOneRestAPIITJ.DataManager.Controllers
                     cmd.Parameters.Add("@UserAlias", SqlDbType.Char, 8).Value =
                         body.UserAlias ?? "USERAL01";
 
-                    cmd.Parameters.Add("@City", SqlDbType.NVarChar, 100).Value =
-                        (object)body.City ?? DBNull.Value;
-                    cmd.Parameters.Add("@State", SqlDbType.NVarChar, 50).Value =
-                        (object)body.State ?? DBNull.Value;
+                    //cmd.Parameters.Add("@City", SqlDbType.NVarChar, 100).Value =
+                    //    (object)body.City ?? DBNull.Value;
+                    //cmd.Parameters.Add("@State", SqlDbType.NVarChar, 50).Value =
+                    //    (object)body.State ?? DBNull.Value;
                     cmd.Parameters.Add("@Zip", SqlDbType.NVarChar, 15).Value =
                         (object)body.Zip ?? DBNull.Value;
 
-                    if (body.BirthMonth.HasValue)
-                        cmd.Parameters.Add("@BirthMonth", SqlDbType.TinyInt).Value = body.BirthMonth.Value;
-                    else
-                        cmd.Parameters.Add("@BirthMonth", SqlDbType.TinyInt).Value = DBNull.Value;
+                    //if (body.BirthMonth.HasValue)
+                    //    cmd.Parameters.Add("@BirthMonth", SqlDbType.TinyInt).Value = body.BirthMonth.Value;
+                    //else
+                    //    cmd.Parameters.Add("@BirthMonth", SqlDbType.TinyInt).Value = DBNull.Value;
 
                     // Contact email for UsersInfo (can be same as login email)
                     cmd.Parameters.Add("@EmailAddress", SqlDbType.NVarChar, 255).Value =
@@ -335,17 +335,17 @@ namespace EmpireOneRestAPIITJ.DataManager.Controllers
             [Required, StringLength(200)]
             public string Password { get; set; }     // plaintext from client; hashed server-side
 
-            [StringLength(100)]
-            public string City { get; set; }
+            //[StringLength(100)]
+            //public string City { get; set; }
 
-            [StringLength(50)]
-            public string State { get; set; }
+            //[StringLength(50)]
+            //public string State { get; set; }
 
             [StringLength(15)]
             public string Zip { get; set; }
 
-            [Range(1, 12)]
-            public int? BirthMonth { get; set; }
+            //[Range(1, 12)]
+            //public int? BirthMonth { get; set; }
 
             [StringLength(25)]
             public string PhoneNum { get; set; }     // e.g. 123-456-7890

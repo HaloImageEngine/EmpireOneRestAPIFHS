@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace EmpireOneRestAPIITJ.Controllers
+namespace EmpireOneRestAPIFHS.Controllers
 {
     public class HomeController : Controller
     {
