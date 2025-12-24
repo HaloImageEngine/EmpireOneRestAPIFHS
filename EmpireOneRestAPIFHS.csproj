@@ -250,6 +250,8 @@
     <Compile Include="Models\ModelUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\Encryption.cs" />
+    <Compile Include="Services\EmailSendService.cs" />
+    <Compile Include="Services\EmailTemplates.cs" />
     <Compile Include="Services\ImageLoadServices.cs" />
     <Compile Include="Users.cs">
       <DependentUpon>FireHorseEntity.tt</DependentUpon>

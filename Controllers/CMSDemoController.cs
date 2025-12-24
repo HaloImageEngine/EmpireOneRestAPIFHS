@@ -3,8 +3,13 @@ using EmpireOneRestAPIFHS.Models;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
@@ -16,10 +21,10 @@ namespace EmpireOneRestAPIFHS.Controllers
         origins:
             "http://localhost:4200," +
             "https://localhost:4200," +
-            "https://CMSDemo.com," +
-            "https://www.CMSDemo.com," +
-            "https://techinterviewjump.com," +
-            "https://www.techinterviewjump.com",
+            "https://firehorseusa.com," +
+            "https://www.firehorseusa.com," +
+            "https://firehorseusa.com," +
+            "https://www.firehorseusa.com",
         headers: "*",
         methods: "*")]
     [RoutePrefix("api/CMSDemo")]
@@ -191,6 +196,8 @@ namespace EmpireOneRestAPIFHS.Controllers
             return Ok(result);
         }
 
+        // Optional: if you later want a POST endpoint to insert questions,
+        // you can uncomment and adapt this:
         [HttpPost, Route("Tech/InsertQuestion")]
         public async Task<IHttpActionResult> InsertQuestion(
             [FromBody][Required] InsertQuestionDto dto,
@@ -203,6 +210,137 @@ namespace EmpireOneRestAPIFHS.Controllers
 
             return Ok(new { rowsAffected = rows });
         }
+
+        // -------------------- Image Upload --------------------
+
+        /// <summary>Upload a profile image for a user.</summary>
+        /// <remarks>
+        /// POST /api/CMSDemo/upload-image
+        /// Form data: userId (int or string), image (file)
+        /// </remarks>
+        [HttpPost, Route("upload-image")]
+        public async Task<IHttpActionResult> UploadImage()
+        {
+            // Check if the request contains multipart/form-data
+            if (!Request.Content.IsMimeMultipartContent())
+            {
+                return Content(HttpStatusCode.UnsupportedMediaType,
+                    new { ok = false, error = "Request must be multipart/form-data." });
+            }
+
+            try
+            {
+                // Get upload path from config
+                var uploadPathConfig = System.Configuration.ConfigurationManager.AppSettings["ImageUploadPath"];
+                if (string.IsNullOrWhiteSpace(uploadPathConfig))
+                {
+                    return InternalServerError(new Exception("ImageUploadPath not configured in Web.config"));
+                }
+
+                // Resolve ~ to physical path
+                var uploadPath = uploadPathConfig.StartsWith("~")
+                    ? HttpContext.Current.Server.MapPath(uploadPathConfig)
+                    : uploadPathConfig;
+
+                // Read multipart data
+                var provider = new MultipartMemoryStreamProvider();
+                await Request.Content.ReadAsMultipartAsync(provider);
+
+                // Extract userId from form data
+                string userId = null;
+                var userIdContent = provider.Contents.FirstOrDefault(c =>
+                    c.Headers.ContentDisposition?.Name?.Trim('"') == "userId");
+
+                if (userIdContent != null)
+                {
+                    userId = await userIdContent.ReadAsStringAsync();
+                }
+
+                if (string.IsNullOrWhiteSpace(userId))
+                {
+                    return BadRequest("userId is required.");
+                }
+
+                // Extract image file
+                var imageContent = provider.Contents.FirstOrDefault(c =>
+                    c.Headers.ContentDisposition?.Name?.Trim('"') == "image");
+
+                if (imageContent == null)
+                {
+                    return BadRequest("No image file uploaded.");
+                }
+
+                var fileName = imageContent.Headers.ContentDisposition.FileName?.Trim('"');
+                if (string.IsNullOrWhiteSpace(fileName))
+                {
+                    return BadRequest("Image file name is missing.");
+                }
+
+                // Validate content type
+                var contentType = imageContent.Headers.ContentType?.MediaType;
+                var allowedTypes = new[] { "image/jpeg", "image/jpg", "image/png", "image/gif" };
+                if (string.IsNullOrWhiteSpace(contentType) || !allowedTypes.Contains(contentType.ToLowerInvariant()))
+                {
+                    return BadRequest($"Invalid image type. Allowed: {string.Join(", ", allowedTypes)}");
+                }
+
+                // Get file extension
+                var fileExtension = Path.GetExtension(fileName);
+                if (string.IsNullOrWhiteSpace(fileExtension))
+                {
+                    // Fallback based on content type
+                    if (contentType.ToLowerInvariant() == "image/jpeg" || contentType.ToLowerInvariant() == "image/jpg")
+                        fileExtension = ".jpg";
+                    else if (contentType.ToLowerInvariant() == "image/png")
+                        fileExtension = ".png";
+                    else if (contentType.ToLowerInvariant() == "image/gif")
+                        fileExtension = ".gif";
+                    else
+                        fileExtension = ".jpg";
+                }
+
+                // Create user-specific folder
+                var userFolderPath = Path.Combine(uploadPath, userId);
+                if (!Directory.Exists(userFolderPath))
+                {
+                    Directory.CreateDirectory(userFolderPath);
+                }
+
+                // Generate unique file name
+                var uniqueFileName = $"{Guid.NewGuid()}{fileExtension}";
+                var filePath = Path.Combine(userFolderPath, uniqueFileName);
+
+                // Save file
+                var imageBytes = await imageContent.ReadAsByteArrayAsync();
+
+                // Optional: validate file size (e.g., max 5MB)
+                const int maxSizeBytes = 5 * 1024 * 1024; // 5MB
+                if (imageBytes.Length > maxSizeBytes)
+                {
+                    return BadRequest($"Image size exceeds maximum allowed size of {maxSizeBytes / (1024 * 1024)}MB.");
+                }
+
+                await Task.Run(() => File.WriteAllBytes(filePath, imageBytes));
+
+                // Return success with file info
+                return Ok(new
+                {
+                    ok = true,
+                    message = "Image uploaded successfully.",
+                    userId = userId,
+                    fileName = uniqueFileName,
+                    filePath = Path.Combine(userId, uniqueFileName).Replace("\\", "/"),
+                    fileSize = imageBytes.Length,
+                    contentType = contentType
+                });
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception($"Error uploading image: {ex.Message}", ex));
+            }
+        }
+
+        // -------------------- DTOs --------------------
 
         public class InsertQuestionDto
         {
@@ -221,7 +359,7 @@ namespace EmpireOneRestAPIFHS.Controllers
             [Required]
             public string Category { get; set; }
 
-            public int QuestionID{ get; set; }
+            public int QuestionID { get; set; }
 
             [Required, MaxLength(2000)]
             public string Answer { get; set; }
@@ -241,6 +379,5 @@ namespace EmpireOneRestAPIFHS.Controllers
             [Required, MaxLength(2000)]
             public string Answer { get; set; }
         }
-
     }
 }

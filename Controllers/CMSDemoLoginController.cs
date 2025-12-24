@@ -1,5 +1,6 @@
 ﻿using EmpireOneRestAPIFHS.DataManager;
 using EmpireOneRestAPIFHS.Security; // Encryption
+using EmpireOneRestAPIFHS.Services;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
@@ -16,13 +17,13 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
         origins:
             "http://localhost:4200," +
             "https://localhost:4200," +
-            "https://CMSDemo.com," +
-            "https://www.CMSDemo.com," +
-            "https://techinterviewjump.com," +
-            "https://www.techinterviewjump.com",
+            "https://firehorseusa.com," +
+            "https://www.firehorseusa.com," +
+            "https://firehorseusa.com," +
+            "https://www.firehorseusa.com",
         headers: "*",
         methods: "*")]
-    [RoutePrefix("api/Techjump/login")]
+    [RoutePrefix("api/RapidCMS/login")]
     /// <summary>
     /// Login & account endpoints for TechJump.
     /// </summary>
@@ -57,7 +58,7 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
 
         // ------------------------------------------------------------
         // 1) CreateLogin: creates login (Users) + profile (UsersInfo)
-        // POST /api/Techjump/login/create
+        // POST /api/RapidCMS/login/create
         // ------------------------------------------------------------
         /// <summary>Creates a new login and user profile. Password is hashed (PBKDF2).</summary>
         [HttpPost, Route("create")]
@@ -89,7 +90,7 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
                         (object)body.Email ?? DBNull.Value;
 
                     // 8-char alias (controller enforces length; DB has CHAR(8))
-                    cmd.Parameters.Add("@UserAlias", SqlDbType.Char, 8).Value =
+                    cmd.Parameters.Add("@UserAlias", SqlDbType.Char, 20).Value =
                         body.UserAlias ?? "USERAL01";
 
                     //cmd.Parameters.Add("@City", SqlDbType.NVarChar, 100).Value =
@@ -132,6 +133,10 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
                         ? (int?)null
                         : Convert.ToInt32(pUserInfoId.Value);
 
+                    EmailSendService esvc = new EmailSendService();
+
+                    string returnemailmsg = esvc.SendEmail_SMTP_Register(body.Email.ToString(), pUserId.ToString(), body.UserAlias.ToString());
+
                     return Ok(new
                     {
                         ok = true,
@@ -153,7 +158,7 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
 
         // ------------------------------------------------------------
         // 2) VerifyLogin: checks password vs stored hash in dbo.Users
-        // POST /api/Techjump/login/verify
+        // POST /api/RapidCMS/login/verify
         // ------------------------------------------------------------
         /// <summary>Verifies a user's login using email + password.</summary>
         [HttpPost, Route("verify")]
@@ -220,7 +225,7 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
 
         // ------------------------------------------------------------
         // 2b) VerifyLoginAlias: checks password via UsersInfo.UserAlias
-        // POST /api/Techjump/login/verify-alias
+        // POST /api/RapidCMS/login/verify-alias
         // ------------------------------------------------------------
         /// <summary>Verifies a user's login using 8-char UserAlias + password.</summary>
         [HttpPost, Route("verify-alias")]
@@ -233,7 +238,8 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
 
             // Normalize alias (DB column is CHAR(8); compare exact)
             var alias = (body.Alias ?? string.Empty).Trim().ToUpperInvariant();
-            if (alias.Length != 8) return BadRequest("Alias must be exactly 8 characters.");
+            if (alias.Length < 6 || alias.Length > 20)
+                return BadRequest("Alias must be between 6 and 20 characters.");
 
             try
             {
@@ -251,7 +257,7 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
                         INNER JOIN dbo.UsersInfo ui ON ui.UserId = u.UserId
                         WHERE ui.UserAlias = @Alias;", conn))
                     {
-                        cmd.Parameters.Add("@Alias", SqlDbType.Char, 8).Value = alias;
+                        cmd.Parameters.Add("@Alias", SqlDbType.VarChar, 20).Value = alias;
 
                         using (var rdr = await cmd
                             .ExecuteReaderAsync(CommandBehavior.SingleRow, ct)
@@ -328,8 +334,8 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
             [Required, EmailAddress, StringLength(255)]
             public string Email { get; set; }        // Users.Email (+ UserName)
 
-            [Required, StringLength(8, MinimumLength = 8,
-                ErrorMessage = "UserAlias must be exactly 8 characters.")]
+            [Required, StringLength(20, MinimumLength = 6,
+                ErrorMessage = "UserAlias must be between 6 and 20 characters.")]
             public string UserAlias { get; set; }    // UsersInfo.UserAlias (CHAR(8))
 
             [Required, StringLength(200)]
@@ -362,7 +368,7 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
 
         public class VerifyLoginAliasRequest
         {
-            [Required, StringLength(8, MinimumLength = 8)]
+            [Required, StringLength(20, MinimumLength = 6)]
             public string Alias { get; set; }
 
             [Required, StringLength(200)]

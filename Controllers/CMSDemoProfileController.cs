@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.EMMA;
+using DocumentFormat.OpenXml.Presentation;
 using EmpireOneRestAPIFHS.Controllers;
 using EmpireOneRestAPIFHS.DataManager;
 using EmpireOneRestAPIFHS.Models;
@@ -10,6 +11,7 @@ using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using EmpireOneRestAPIFHS.Services;
 
 namespace EmpireOneRestAPIFHS.DataManager
 .Controllers
@@ -19,10 +21,10 @@ namespace EmpireOneRestAPIFHS.DataManager
         origins:
             "http://localhost:4200," +
             "https://localhost:4200," +
-            "https://CMSDemo.com," +
-            "https://www.CMSDemo.com," +
-            "https://techinterviewjump.com," +
-            "https://www.techinterviewjump.com",
+            "https://firehorseusa.com," +
+            "https://www.firehorseusa.com," +
+            "https://firehorseusa.com," +
+            "https://www.firehorseusa.com",
         headers: "*",
         methods: "*")]
     [RoutePrefix("api/profile")]
@@ -103,6 +105,7 @@ namespace EmpireOneRestAPIFHS.DataManager
                         return Created(location, new { ok = true, ImageLoad = created });
                     }
                 }
+
             }
             catch (SqlException ex)
             {

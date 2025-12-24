@@ -17,13 +17,13 @@ namespace EmpireOneRestAPIFHS.Controllers
 { 
     // CORS for TechJump frontends + localhost dev
     [EnableCors(
-        origins:
+               origins:
             "http://localhost:4200," +
             "https://localhost:4200," +
-            "https://CMSDemo.com," +
-            "https://www.CMSDemo.com," +
-            "https://techinterviewjump.com," +
-            "https://www.techinterviewjump.com",
+            "https://firehorseusa.com," +
+            "https://www.firehorseusa.com," +
+            "https://firehorseusa.com," +
+            "https://www.firehorseusa.com",
         headers: "*",
         methods: "*")]
     [RoutePrefix("api/CMSDemoImageLoad")]
