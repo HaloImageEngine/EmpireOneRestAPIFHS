@@ -211,59 +211,84 @@ namespace EmpireOneRestAPIFHS.DataManager
             return results;
         }
 
-        public async Task<int> InsertQuestion(string cat, string question, string answer)
+        /// <summary>
+        /// Inserts image information and returns the new ImageId.
+      /// </summary>
+  public async Task<int> InsertImageInfo(
+string imageType,
+            string imageLocation,
+   string userAlias,
+            int userId,
+   int? size = null,
+         int? dimWidth = null,
+     int? dimHeight = null,
+            string imageOrientation = null)
         {
-            int newId = 0;
-
-
+            int newImageId = 0;
             var connDB = _cs;
-            if (answer.Length > 0)
+
+            try
             {
-                try
+    using (SqlConnection sqlCon = new SqlConnection(connDB))
                 {
-                    using (SqlConnection sqlCon = new SqlConnection(connDB))
-                    {
-                        sqlCon.Open();
+              await sqlCon.OpenAsync().ConfigureAwait(false);
 
-                        using (SqlCommand sql_cmnd = new SqlCommand("spInsertQuestion", sqlCon))
-                        {
-                            sql_cmnd.CommandType = CommandType.StoredProcedure;
+       using (SqlCommand sql_cmnd = new SqlCommand("spInsert_ImageInfo", sqlCon))
+       {
+     sql_cmnd.CommandType = CommandType.StoredProcedure;
 
-                            // ✅ Input Parameters
-                            sql_cmnd.Parameters.AddWithValue("@Category", cat);
-                            sql_cmnd.Parameters.AddWithValue("@Question", question);
-                            sql_cmnd.Parameters.AddWithValue("@Answer", answer);
+          // Input Parameters
+   sql_cmnd.Parameters.AddWithValue("@ImageType", 
+            (object)imageType ?? DBNull.Value);
+  
+sql_cmnd.Parameters.AddWithValue("@ImageLocation", 
+         (object)imageLocation ?? DBNull.Value);
+ 
+        sql_cmnd.Parameters.AddWithValue("@UserAlias", 
+     (object)userAlias ?? DBNull.Value);
+       
+       sql_cmnd.Parameters.AddWithValue("@UserId", userId);
+             
+    sql_cmnd.Parameters.AddWithValue("@Size", 
+        size.HasValue ? (object)size.Value : DBNull.Value);
+               
+ sql_cmnd.Parameters.AddWithValue("@DimWidth", 
+    dimWidth.HasValue ? (object)dimWidth.Value : DBNull.Value);
+          
+     sql_cmnd.Parameters.AddWithValue("@DimHeight", 
+          dimHeight.HasValue ? (object)dimHeight.Value : DBNull.Value);
+           
+      sql_cmnd.Parameters.AddWithValue("@ImageOrientation", 
+       (object)imageOrientation ?? DBNull.Value);
 
-                            // ✅ OUTPUT Parameter
-                            SqlParameter outputIdParam = new SqlParameter
-                            {
-                                ParameterName = "@QuestionID",
-                                SqlDbType = SqlDbType.Int,
-                                Direction = ParameterDirection.Output
-                            };
+              // OUTPUT Parameter
+      SqlParameter outputIdParam = new SqlParameter
+             {
+             ParameterName = "@ImageID",
+  SqlDbType = SqlDbType.Int,
+         Direction = ParameterDirection.Output
+     };
+            sql_cmnd.Parameters.Add(outputIdParam);
 
-                            sql_cmnd.Parameters.Add(outputIdParam);
+     // Execute async
+    await sql_cmnd.ExecuteNonQueryAsync().ConfigureAwait(false);
 
-                            // Execute async
-                            await sql_cmnd.ExecuteNonQueryAsync().ConfigureAwait(false);
-
-
-                            // ✅ Read OUTPUT Value
-                            if (outputIdParam.Value != DBNull.Value)
-                            {
-                                newId = Convert.ToInt32(outputIdParam.Value);
-                            }
-                        }
-                    }
-                }
-                catch (SqlException ex)
-                {
-                    string logWriterErr = ex.Message;
-                    // TODO: log properly if needed
-                }
+           // Read OUTPUT Value
+       if (outputIdParam.Value != null && outputIdParam.Value != DBNull.Value)
+  {
+     newImageId = Convert.ToInt32(outputIdParam.Value);
+  }
+      }
+        }
             }
+            catch (SqlException ex)
+    {
+     string logWriterErr = ex.Message;
+             // TODO: log properly if needed
+    throw; // Re-throw to let caller handle the error
+   }
 
-            return newId;
+  return newImageId;
         }
 
         public List<ModelKeyWord> GetKeyWordByQID(string QID)
@@ -788,5 +813,41 @@ namespace EmpireOneRestAPIFHS.DataManager
 
             return qDataList;
         }
+
+        /// <summary>
+        /// Inserts a new question and returns the number of rows affected.
+        /// </summary>
+  public async Task<int> InsertQuestion(string category, string question, string answer)
+    {
+        var connDB = _cs;
+
+      try
+            {
+           using (var sqlCon = new SqlConnection(connDB))
+       {
+      await sqlCon.OpenAsync().ConfigureAwait(false);
+
+           using (var sql_cmnd = new SqlCommand("spInsertQuestion", sqlCon))
+         {
+          sql_cmnd.CommandType = CommandType.StoredProcedure;
+
+       sql_cmnd.Parameters.AddWithValue("@Category", 
+            (object)category ?? DBNull.Value);
+     sql_cmnd.Parameters.AddWithValue("@Question", 
+(object)question ?? DBNull.Value);
+     sql_cmnd.Parameters.AddWithValue("@Answer", 
+         (object)answer ?? DBNull.Value);
+
+return await sql_cmnd.ExecuteNonQueryAsync().ConfigureAwait(false);
+  }
+       }
+    }
+            catch (SqlException ex)
+          {
+         string logWriterErr = ex.Message;
+     // TODO: log properly if needed
+     throw;
+    }
+   }
     }
 }

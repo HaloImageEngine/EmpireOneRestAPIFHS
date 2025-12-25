@@ -198,18 +198,18 @@ namespace EmpireOneRestAPIFHS.Controllers
 
         // Optional: if you later want a POST endpoint to insert questions,
         // you can uncomment and adapt this:
-        [HttpPost, Route("Tech/InsertQuestion")]
-        public async Task<IHttpActionResult> InsertQuestion(
-            [FromBody][Required] InsertQuestionDto dto,
-            CancellationToken ct)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+        //[HttpPost, Route("Tech/InsertQuestion")]
+        //public async Task<IHttpActionResult> InsertQuestion(
+        //    [FromBody][Required] InsertQuestionDto dto,
+        //    CancellationToken ct)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return BadRequest(ModelState);
 
-            var rows = await _data1.InsertQuestion(dto.Category, dto.Question, dto.Answer);
+        //    var rows = await _data1.InsertQuestion(dto.Category, dto.Question, dto.Answer);
 
-            return Ok(new { rowsAffected = rows });
-        }
+        //    return Ok(new { rowsAffected = rows });
+        //}
 
         // -------------------- Image Upload --------------------
 

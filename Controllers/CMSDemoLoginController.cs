@@ -15,17 +15,17 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
     // CORS for TechJump frontends + localhost dev
     [EnableCors(
         origins:
-            "http://localhost:4200," +
-            "https://localhost:4200," +
-            "https://firehorseusa.com," +
+   "http://localhost:4200," +
+         "https://localhost:4200," +
+         "https://firehorseusa.com," +
             "https://www.firehorseusa.com," +
             "https://firehorseusa.com," +
             "https://www.firehorseusa.com",
         headers: "*",
-        methods: "*")]
+     methods: "*")]
     [RoutePrefix("api/RapidCMS/login")]
     /// <summary>
-    /// Login & account endpoints for TechJump.
+    /// Login & account endpoints for RapidCMS.
     /// </summary>
     public class CMSDemoLoginController : ApiController
     {
@@ -34,7 +34,7 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
         private static string GetCs()
         {
             var cs = System.Configuration.ConfigurationManager
-                .ConnectionStrings["CMSDemoProd"]?.ConnectionString;
+                  .ConnectionStrings["CMSDemoProd"]?.ConnectionString;
 
             if (string.IsNullOrWhiteSpace(cs))
                 throw new InvalidOperationException("Connection string 'CMSDemoProd' not found.");
@@ -44,6 +44,7 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
 
         // -------------------- CORS PREFLIGHT (OPTIONS) --------------------
         // These help when IIS/WebDAV/etc. interfere with OPTIONS routing.
+
         [HttpOptions, Route("")]
         public IHttpActionResult OptionsRoot() => Ok();
 
@@ -53,8 +54,17 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
         [HttpOptions, Route("verify-alias")]
         public IHttpActionResult OptionsVerifyAlias() => Ok();
 
+        [HttpOptions, Route("verify-email")]
+        public IHttpActionResult OptionsVerifyEmail() => Ok();
+
+        [HttpOptions, Route("check-alias")]
+        public IHttpActionResult OptionsCheckAlias() => Ok();
+
         [HttpOptions, Route("create")]
         public IHttpActionResult OptionsCreate() => Ok();
+
+        [HttpOptions, Route("db-health")]
+        public IHttpActionResult OptionsDbHealth() => Ok();
 
         // ------------------------------------------------------------
         // 1) CreateLogin: creates login (Users) + profile (UsersInfo)
@@ -79,42 +89,33 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
 
                     // Map proc params
                     cmd.Parameters.Add("@FirstName", SqlDbType.NVarChar, 50).Value =
-                        (object)body.FirstName.ToLower() ?? DBNull.Value;
+            (object)body.FirstName.ToLower() ?? DBNull.Value;
                     cmd.Parameters.Add("@MiddleInitial", SqlDbType.NChar, 1).Value =
-                        (object)body.MiddleInitial?.ToLower() ?? DBNull.Value;
+         (object)body.MiddleInitial?.ToLower() ?? DBNull.Value;
                     cmd.Parameters.Add("@LastName", SqlDbType.NVarChar, 50).Value =
-                        (object)body.LastName.ToLower() ?? DBNull.Value;
+                 (object)body.LastName.ToLower() ?? DBNull.Value;
 
                     // Login email used for Users.Email and Users.UserName
                     cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 255).Value =
-                        (object)body.Email ?? DBNull.Value;
+           (object)body.Email ?? DBNull.Value;
 
-                    // 8-char alias (controller enforces length; DB has CHAR(8))
+                    // User alias (6-20 characters)
                     cmd.Parameters.Add("@UserAlias", SqlDbType.Char, 20).Value =
-                        body.UserAlias ?? "USERAL01";
+                     body.UserAlias ?? "USERAL01";
 
-                    //cmd.Parameters.Add("@City", SqlDbType.NVarChar, 100).Value =
-                    //    (object)body.City ?? DBNull.Value;
-                    //cmd.Parameters.Add("@State", SqlDbType.NVarChar, 50).Value =
-                    //    (object)body.State ?? DBNull.Value;
                     cmd.Parameters.Add("@Zip", SqlDbType.NVarChar, 15).Value =
-                        (object)body.Zip ?? DBNull.Value;
-
-                    //if (body.BirthMonth.HasValue)
-                    //    cmd.Parameters.Add("@BirthMonth", SqlDbType.TinyInt).Value = body.BirthMonth.Value;
-                    //else
-                    //    cmd.Parameters.Add("@BirthMonth", SqlDbType.TinyInt).Value = DBNull.Value;
+                  (object)body.Zip ?? DBNull.Value;
 
                     // Contact email for UsersInfo (can be same as login email)
                     cmd.Parameters.Add("@EmailAddress", SqlDbType.NVarChar, 255).Value =
-                        (object)body.Email ?? DBNull.Value;
+                       (object)body.Email ?? DBNull.Value;
 
                     cmd.Parameters.Add("@PasswordHash", SqlDbType.VarChar, 255).Value = passwordHash;
 
                     cmd.Parameters.Add("@PhoneNum", SqlDbType.NVarChar, 25).Value =
-                        (object)body.PhoneNum ?? DBNull.Value;
+                (object)body.PhoneNum ?? DBNull.Value;
                     cmd.Parameters.Add("@ReadPW", SqlDbType.NVarChar, 50).Value =
-                        (object)body.Password ?? DBNull.Value;
+                   (object)body.Password ?? DBNull.Value;
 
                     var pUserId = cmd.Parameters.Add("@NewUserId", SqlDbType.Int);
                     pUserId.Direction = ParameterDirection.Output;
@@ -126,16 +127,19 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
                     await cmd.ExecuteNonQueryAsync();
 
                     var newUserId = (pUserId.Value == DBNull.Value)
-                        ? (int?)null
-                        : Convert.ToInt32(pUserId.Value);
+                     ? (int?)null
+                      : Convert.ToInt32(pUserId.Value);
 
                     var newUserInfoId = (pUserInfoId.Value == DBNull.Value)
-                        ? (int?)null
-                        : Convert.ToInt32(pUserInfoId.Value);
+                            ? (int?)null
+                                      : Convert.ToInt32(pUserInfoId.Value);
 
+                    // Send welcome email
                     EmailSendService esvc = new EmailSendService();
-
-                    string returnemailmsg = esvc.SendEmail_SMTP_Register(body.Email.ToString(), pUserId.ToString(), body.UserAlias.ToString());
+                    string returnemailmsg = esvc.SendEmail_SMTP_Register(
+                         body.Email.ToString(),
+                   pUserId.ToString(),
+                 body.UserAlias.ToString());
 
                     return Ok(new
                     {
@@ -148,7 +152,7 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
             catch (SqlException ex)
             {
                 return Content(System.Net.HttpStatusCode.Conflict,
-                    new { ok = false, error = $"SQL error {ex.Number}: {ex.Message}" });
+       new { ok = false, error = $"SQL error {ex.Number}: {ex.Message}" });
             }
             catch (Exception ex)
             {
@@ -163,8 +167,8 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
         /// <summary>Verifies a user's login using email + password.</summary>
         [HttpPost, Route("verify")]
         public async Task<IHttpActionResult> VerifyLogin(
-            [FromBody] VerifyLoginRequest body,
-            CancellationToken ct)
+         [FromBody] VerifyLoginRequest body,
+                    CancellationToken ct)
         {
             if (body == null) return BadRequest("Body is required.");
             if (!ModelState.IsValid) return BadRequest(ModelState);
@@ -180,21 +184,22 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
 
                     // 1) Read user row
                     using (var cmd = new SqlCommand(@"
-                        SELECT TOP (1) UserId, PasswordHash
+                         SELECT TOP (1) UserId, PasswordHash
                         FROM dbo.Users
-                        WHERE Email = @Email;", conn))
+                           WHERE Email = @Email
+                       ORDER BY UserId DESC;", conn))
                     {
                         cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 255).Value =
-                            body.Email ?? string.Empty;
+                                 body.Email ?? string.Empty;
 
                         using (var rdr = await cmd
-                            .ExecuteReaderAsync(CommandBehavior.SingleRow, ct)
-                            .ConfigureAwait(false))
+                .ExecuteReaderAsync(CommandBehavior.SingleRow, ct)
+                  .ConfigureAwait(false))
                         {
                             if (!await rdr.ReadAsync(ct).ConfigureAwait(false))
                             {
                                 return Content(System.Net.HttpStatusCode.Unauthorized,
-                                    new { ok = false, error = "Invalid email or password." });
+                           new { ok = false, error = "Invalid email or password." });
                             }
 
                             userId = rdr.GetInt32(0);
@@ -208,7 +213,7 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
                         !Encryption.PasswordMatch(password, storedHash))
                     {
                         return Content(System.Net.HttpStatusCode.Unauthorized,
-                            new { ok = false, error = "Invalid email or password." });
+                               new { ok = false, error = "Invalid email or password." });
                     }
 
                     // 3) Update last login
@@ -224,19 +229,82 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
         }
 
         // ------------------------------------------------------------
-        // 2b) VerifyLoginAlias: checks password via UsersInfo.UserAlias
-        // POST /api/RapidCMS/login/verify-alias
+        // 3) CheckLoginAlias: checks if UserAlias exists in database
+        // POST /api/RapidCMS/login/check-alias
         // ------------------------------------------------------------
-        /// <summary>Verifies a user's login using 8-char UserAlias + password.</summary>
-        [HttpPost, Route("verify-alias")]
-        public async Task<IHttpActionResult> VerifyLoginAlias(
-            [FromBody] VerifyLoginAliasRequest body,
-            CancellationToken ct)
+        /// <summary>Checks if a user alias already exists in the database.</summary>
+        [HttpPost, Route("check-alias")]
+        public async Task<IHttpActionResult> CheckLoginAlias(
+                [FromBody] VerifyCheckAliasRequest body,
+       CancellationToken ct)
         {
             if (body == null) return BadRequest("Body is required.");
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            // Normalize alias (DB column is CHAR(8); compare exact)
+            // Normalize alias (DB column is VARCHAR(20); compare exact)
+            var alias = (body.Alias ?? string.Empty).Trim().ToUpperInvariant();
+            if (alias.Length < 6 || alias.Length > 20)
+                return BadRequest("Alias must be between 6 and 20 characters.");
+
+            try
+            {
+                using (var conn = new SqlConnection(GetCs()))
+                {
+                    await conn.OpenAsync(ct).ConfigureAwait(false);
+
+                    // Check if user alias exists
+                    using (var cmd = new SqlCommand(@"
+                        SELECT COUNT(1)
+                        FROM dbo.UsersInfo
+                         WHERE UserAlias = @Alias;", conn))
+                    {
+                        cmd.Parameters.Add("@Alias", SqlDbType.VarChar, 20).Value = alias;
+
+                        var count = (int)await cmd.ExecuteScalarAsync(ct).ConfigureAwait(false);
+
+                        if (count > 0)
+                        {
+                            // Alias already exists
+                            return Ok(new
+                            {
+                                ok = false,
+                                exists = true,
+                                message = "User alias already exists."
+                            });
+                        }
+                        else
+                        {
+                            // Alias is available
+                            return Ok(new
+                            {
+                                ok = true,
+                                exists = false,
+                                message = "User alias is available."
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        // ------------------------------------------------------------
+        // 4) VerifyLoginAlias: checks password via UsersInfo.UserAlias
+        // POST /api/RapidCMS/login/verify-alias
+        // ------------------------------------------------------------
+        /// <summary>Verifies a user's login using UserAlias + password.</summary>
+        [HttpPost, Route("verify-alias")]
+        public async Task<IHttpActionResult> VerifyLoginAlias(
+             [FromBody] VerifyLoginAliasRequest body,
+      CancellationToken ct)
+        {
+            if (body == null) return BadRequest("Body is required.");
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            // Normalize alias (DB column is VARCHAR(20); compare exact)
             var alias = (body.Alias ?? string.Empty).Trim().ToUpperInvariant();
             if (alias.Length < 6 || alias.Length > 20)
                 return BadRequest("Alias must be between 6 and 20 characters.");
@@ -252,22 +320,22 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
 
                     // 1) Read user row by alias
                     using (var cmd = new SqlCommand(@"
-                        SELECT TOP (1) u.UserId, u.PasswordHash
-                        FROM dbo.Users u
-                        INNER JOIN dbo.UsersInfo ui ON ui.UserId = u.UserId
-                        WHERE ui.UserAlias = @Alias;", conn))
-                    {
+             SELECT TOP (1) u.UserId, u.PasswordHash
+                     FROM dbo.Users u
+                             INNER JOIN dbo.UsersInfo ui ON ui.UserId = u.UserId
+                                 WHERE ui.UserAlias = @Alias;", conn))
+                                        {
                         cmd.Parameters.Add("@Alias", SqlDbType.VarChar, 20).Value = alias;
 
                         using (var rdr = await cmd
-                            .ExecuteReaderAsync(CommandBehavior.SingleRow, ct)
-                            .ConfigureAwait(false))
+                              .ExecuteReaderAsync(CommandBehavior.SingleRow, ct)
+                          .ConfigureAwait(false))
                         {
                             if (!await rdr.ReadAsync(ct).ConfigureAwait(false))
                             {
                                 // Prevent alias enumeration
                                 return Content(System.Net.HttpStatusCode.Unauthorized,
-                                    new { ok = false, error = "Invalid alias or password." });
+                               new { ok = false, error = "Invalid alias or password." });
                             }
 
                             userId = rdr.GetInt32(0);
@@ -278,10 +346,10 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
                     // 2) Password check
                     var password = body.Password ?? string.Empty;
                     if (string.IsNullOrWhiteSpace(storedHash) ||
-                        !Encryption.PasswordMatch(password, storedHash))
+                !Encryption.PasswordMatch(password, storedHash))
                     {
                         return Content(System.Net.HttpStatusCode.Unauthorized,
-                            new { ok = false, error = "Invalid alias or password." });
+                                new { ok = false, error = "Invalid alias or password." });
                     }
 
                     // 3) Update last login
@@ -296,29 +364,145 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
             }
         }
 
-        private static async Task UpdateLastLoginUtcAsync(
-            SqlConnection conn,
-            int userId,
-            CancellationToken ct)
+        // ------------------------------------------------------------
+        // 5) VerifyLoginEmail: checks password via email
+        // POST /api/RapidCMS/login/verify-email
+        // ------------------------------------------------------------
+        /// <summary>Verifies a user's login using email + password.</summary>
+        [HttpPost, Route("verify-email")]
+        public async Task<IHttpActionResult> VerifyLoginEmail(
+   [FromBody] VerifyLoginEmailRequest body,
+       CancellationToken ct)
         {
-            using (var cmd = new SqlCommand(
-                "UPDATE dbo.Users SET LastLoginUtc = SYSUTCDATETIME() WHERE UserId = @UserId;",
-                conn))
+            if (body == null) return BadRequest("Body is required.");
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            try
             {
-                cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = userId;
-                await cmd.ExecuteNonQueryAsync(ct).ConfigureAwait(false);
+                int userId;
+                string storedHash;
+
+                using (var conn = new SqlConnection(GetCs()))
+                {
+                    await conn.OpenAsync(ct).ConfigureAwait(false);
+
+                    // 1) Read user row by email
+                    using (var cmd = new SqlCommand(@"
+                      SELECT TOP (1) UserId, PasswordHash
+                       FROM dbo.Users
+                            WHERE Email = @Email
+                       ORDER BY UserId DESC;", conn))
+                                    {
+                        cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 255).Value =
+                       body.Email ?? string.Empty;
+
+                        using (var rdr = await cmd
+              .ExecuteReaderAsync(CommandBehavior.SingleRow, ct)
+                  .ConfigureAwait(false))
+                        {
+                            if (!await rdr.ReadAsync(ct).ConfigureAwait(false))
+                            {
+                                return Content(System.Net.HttpStatusCode.Unauthorized,
+                         new { ok = false, error = "Invalid email or password." });
+                            }
+
+                            userId = rdr.GetInt32(0);
+                            storedHash = rdr.IsDBNull(1) ? null : rdr.GetString(1);
+                        }
+                    }
+
+                    // 2) Validate password
+                    var password = body.Password ?? string.Empty;
+                    if (string.IsNullOrWhiteSpace(storedHash) ||
+                     !Encryption.PasswordMatch(password, storedHash))
+                    {
+                        return Content(System.Net.HttpStatusCode.Unauthorized,
+                          new { ok = false, error = "Invalid email or password." });
+                    }
+
+                    // 3) Update last login
+                    await UpdateLastLoginUtcAsync(conn, userId, ct).ConfigureAwait(false);
+
+                    return Ok(new { ok = true, userId });
+                }
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
             }
         }
 
-        // -------------------- Queries --------------------
+        // ------------------------------------------------------------
+        // Database Health Check & Pool Clear
+        // GET /api/RapidCMS/login/db-health
+        // ------------------------------------------------------------
+        /// <summary>Database health check - helps diagnose connection pool issues.</summary>
+        [HttpGet, Route("db-health")]
+      public IHttpActionResult DbHealthCheck()
+        {
+    try
+          {
+     // Clear all pools for this connection string
+           SqlConnection.ClearAllPools();
+
+    using (var conn = new SqlConnection(GetCs()))
+  {
+         conn.Open();
+       using (var cmd = new SqlCommand("SELECT 1", conn))
+{
+   var result = cmd.ExecuteScalar();
+  return Ok(new
+     {
+          ok = true,
+           message = "Database connection healthy",
+     poolCleared = true,
+       testQuery = result?.ToString()
+           });
+       }
+                }
+            }
+   catch (Exception ex)
+ {
+          return Ok(new
+       {
+         ok = false,
+                error = ex.Message,
+  stackTrace = ex.StackTrace
+   });
+            }
+        }
+
+        // ------------------------------------------------------------
+        // Helper Methods
+        // ------------------------------------------------------------
+
+        private static async Task UpdateLastLoginUtcAsync(
+               SqlConnection conn,
+                        int userId,
+                        CancellationToken ct)
+                    {
+                        using (var cmd = new SqlCommand(
+                   "UPDATE dbo.Users SET LastLoginUtc = SYSUTCDATETIME() WHERE UserId = @UserId;",
+                         conn))
+                        {
+                            cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = userId;
+                            await cmd.ExecuteNonQueryAsync(ct).ConfigureAwait(false);
+                        }
+        }
+
+        // ------------------------------------------------------------
+        // Queries
+        // ------------------------------------------------------------
 
         /// <summary>Get profile + cards by user alias.</summary>
         [HttpGet, Route("getprofilebyuseralias")]
         public IHttpActionResult Get_Profile_byUserAlias(
-            [FromUri][Required] string useralias)
-            => Ok(_data.Get_UserInfowithCards(useralias));
+           [FromUri][Required] string useralias)
+              => Ok(_data.Get_UserInfowithCards(useralias));
 
-        // -------------------- DTOs --------------------
+        // ------------------------------------------------------------
+        // DTOs (Data Transfer Objects)
+        // ------------------------------------------------------------
 
         public class CreateLoginRequest
         {
@@ -332,29 +516,20 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
             public string LastName { get; set; }
 
             [Required, EmailAddress, StringLength(255)]
-            public string Email { get; set; }        // Users.Email (+ UserName)
+            public string Email { get; set; }
 
             [Required, StringLength(20, MinimumLength = 6,
                 ErrorMessage = "UserAlias must be between 6 and 20 characters.")]
-            public string UserAlias { get; set; }    // UsersInfo.UserAlias (CHAR(8))
+            public string UserAlias { get; set; }
 
             [Required, StringLength(200)]
-            public string Password { get; set; }     // plaintext from client; hashed server-side
-
-            //[StringLength(100)]
-            //public string City { get; set; }
-
-            //[StringLength(50)]
-            //public string State { get; set; }
+            public string Password { get; set; }
 
             [StringLength(15)]
             public string Zip { get; set; }
 
-            //[Range(1, 12)]
-            //public int? BirthMonth { get; set; }
-
             [StringLength(25)]
-            public string PhoneNum { get; set; }     // e.g. 123-456-7890
+            public string PhoneNum { get; set; }
         }
 
         public class VerifyLoginRequest
@@ -366,10 +541,25 @@ namespace EmpireOneRestAPIFHS.DataManager.Controllers
             public string Password { get; set; }
         }
 
+        public class VerifyCheckAliasRequest
+        {
+            [Required, StringLength(20, MinimumLength = 6)]
+            public string Alias { get; set; }
+        }
+
         public class VerifyLoginAliasRequest
         {
             [Required, StringLength(20, MinimumLength = 6)]
             public string Alias { get; set; }
+
+            [Required, StringLength(200)]
+            public string Password { get; set; }
+        }
+
+        public class VerifyLoginEmailRequest
+        {
+            [Required, EmailAddress, StringLength(255)]
+            public string Email { get; set; }
 
             [Required, StringLength(200)]
             public string Password { get; set; }

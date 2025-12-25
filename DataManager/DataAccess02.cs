@@ -367,6 +367,85 @@ namespace EmpireOneRestAPIFHS.DataManager
 
         }
 
+        /// <summary>
+        /// Inserts image information and returns the new ImageId.
+        /// </summary>
+        public async Task<int> InsertImageInfo(
+   string imageType,
+ string imageLocation,
+    string userAlias,
+    int userId,
+            int? size = null,
+            int? dimWidth = null,
+            int? dimHeight = null,
+       string imageOrientation = null)
+        {
+ int newImageId = 0;
+
+   try
+         {
+        using (SqlConnection sqlCon = new SqlConnection(dbconn))
+     {
+       await sqlCon.OpenAsync().ConfigureAwait(false);
+
+     using (SqlCommand sql_cmnd = new SqlCommand("spInsert_ImageInfo", sqlCon))
+                    {
+      sql_cmnd.CommandType = CommandType.StoredProcedure;
+
+     // Input Parameters
+    sql_cmnd.Parameters.AddWithValue("@ImageType",
+     (object)imageType ?? DBNull.Value);
+
+         sql_cmnd.Parameters.AddWithValue("@ImageLocation",
+      (object)imageLocation ?? DBNull.Value);
+
+             sql_cmnd.Parameters.AddWithValue("@UserAlias",
+          (object)userAlias ?? DBNull.Value);
+
+          sql_cmnd.Parameters.AddWithValue("@UserId", userId);
+
+     sql_cmnd.Parameters.AddWithValue("@Size",
+            size.HasValue ? (object)size.Value : DBNull.Value);
+
+  sql_cmnd.Parameters.AddWithValue("@DimWidth",
+      dimWidth.HasValue ? (object)dimWidth.Value : DBNull.Value);
+
+    sql_cmnd.Parameters.AddWithValue("@DimHeight",
+   dimHeight.HasValue ? (object)dimHeight.Value : DBNull.Value);
+
+         sql_cmnd.Parameters.AddWithValue("@ImageOrientation",
+                (object)imageOrientation ?? DBNull.Value);
+
+     // OUTPUT Parameter
+        SqlParameter outputIdParam = new SqlParameter
+              {
+          ParameterName = "@ImageID",
+         SqlDbType = SqlDbType.Int,
+           Direction = ParameterDirection.Output
+      };
+          sql_cmnd.Parameters.Add(outputIdParam);
+
+          // Execute async
+     await sql_cmnd.ExecuteNonQueryAsync().ConfigureAwait(false);
+
+     // Read OUTPUT Value
+   if (outputIdParam.Value != null && outputIdParam.Value != DBNull.Value)
+              {
+newImageId = Convert.ToInt32(outputIdParam.Value);
+   }
+       }
+   }
+    }
+      catch (SqlException ex)
+      {
+        string logWriterErr = ex.Message;
+      // TODO: log properly if needed
+    throw; // Re-throw to let caller handle the error
+ }
+
+            return newImageId;
+        }
+
         public int Insert_UserInfo(ModelUser body)
         {
 

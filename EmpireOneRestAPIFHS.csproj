@@ -216,7 +216,7 @@
     <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\CMSDemoLoginController.cs" />
     <Compile Include="Controllers\CMSDemoProfileController.cs" />
-    <Compile Include="Controllers\CMSDemoSubscriptionController.cs" />
+    <Compile Include="Controllers\CMSDemoImageLoadController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DataManager\DataAccess.cs" />
     <Compile Include="DataManager\DataAccess02.cs" />
